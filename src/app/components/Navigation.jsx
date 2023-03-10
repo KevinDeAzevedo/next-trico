@@ -1,6 +1,18 @@
 import Link from 'next/link';
 
-export default function Navigation() {
+async function getData() {
+  const res = await fetch('http://localhost:1337/api/countries');
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
+}
+
+export default async function Navigation() {
+  const data = await getData();
+  const countries = data.data;
+
   return (
     <>
       <nav>
@@ -9,13 +21,22 @@ export default function Navigation() {
             <Link href="/">Accueil</Link>
           </li>
           <li>
-            <Link href="pages/carnet-de-route">Carnet de route</Link>
+            <Link href="/carnet-de-route">Carnet de route</Link>
+            <ul>
+              {countries.map((country, index) => (
+                <li key={country.id}>
+                  <Link href={`/carnet-de-route/${country.slug}`}>
+                    {country.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </li>
           <li>
-            <Link href="pages/le-van-trico">Le van Trico</Link>
+            <Link href="/le-van-trico">Le van Trico</Link>
           </li>
           <li>
-            <Link href="pages/contact">Nous écrire</Link>
+            <Link href="/contact">Nous écrire</Link>
           </li>
           <li>
             <a
