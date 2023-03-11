@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import When from '../../components/When';
 
 async function getNews() {
@@ -23,6 +24,11 @@ async function getPage() {
   return res.json();
 }
 
+function processImage(contentParam) {
+  // Ajoute l'URL du backend
+  return contentParam.replaceAll('/uploads', 'http://localhost:1337/uploads');
+}
+
 export default async function News() {
   const data = await getNews();
   const news = data.data;
@@ -36,7 +42,7 @@ export default async function News() {
             <li key={post.id}>
               <When date={post.date} />
               <h2>{post.title}</h2>
-              <p>{post.content}</p>
+              <MDXRemote source={processImage(post.content)} />
               <img
                 className="img-post"
                 src={`http://localhost:1337${post.cover.data.url}`}
