@@ -18,7 +18,6 @@ async function getArticle(params) {
 export default async function Article({ params }) {
   const data = await getArticle(params);
   const article = data.data.attributes;
-  console.log(article);
   return (
     <main>
       <h1>{article.title}</h1>

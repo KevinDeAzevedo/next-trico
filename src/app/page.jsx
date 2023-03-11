@@ -59,7 +59,6 @@ export default async function Home() {
   const carnet = await getCarnet();
   const carnetIntro = carnet.data.intro;
   const trico = await getTrico();
-  const tricoIsfinished = trico.data.isFinished;
   const tricoIntro = trico.data.intro;
   const articles = await getArticles();
   const lastsArticles = articles.data.slice(-2);
@@ -82,7 +81,7 @@ export default async function Home() {
       </section>
       <section>
         <h2>{page.secondTitle}</h2>
-        {tricoIsfinished ? <p>Finalisé</p> : <p>En cours</p>}
+        {trico.data.isFinished ? <p>Finalisé</p> : <p>En cours</p>}
         <p>{tricoIntro}</p>
         <Link href="/le-van-trico">Le van Trico</Link>
         <ul>
