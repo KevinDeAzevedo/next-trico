@@ -12,12 +12,24 @@ async function getNews() {
   return res.json();
 }
 
+async function getPage() {
+  const res = await fetch('http://localhost:1337/api/newspage', {
+    cache: 'no-store',
+  });
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
+}
+
 export default async function News() {
   const data = await getNews();
   const news = data.data;
+  const page = await getPage();
   return (
     <main>
-      <h1>News</h1>
+      <h1>{page.data.title}</h1>
       <ul>
         {news
           .map((post, index) => (
