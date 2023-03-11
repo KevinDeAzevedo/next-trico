@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import When from '../../components/When';
+
 async function getNews() {
   const res = await fetch('http://localhost:1337/api/news?populate=*', {
     cache: 'no-store',
@@ -20,6 +22,7 @@ export default async function News() {
         {news
           .map((post, index) => (
             <li key={post.id}>
+              <When date={post.date} />
               <h2>{post.title}</h2>
               <p>{post.content}</p>
               <img

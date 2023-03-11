@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
-import moment from 'moment';
-import 'moment/locale/fr';
+import When from './components/When';
 
 async function getHomepage() {
   const res = await fetch('http://localhost:1337/api/homepage?populate=*', {
@@ -47,11 +46,6 @@ async function getArticles() {
   return res.json();
 }
 
-function getDate(prop) {
-  const date = moment(prop);
-  return date.locale('fr').format('LL');
-}
-
 export default async function Home() {
   const data = await getHomepage();
   const page = data.data;
@@ -88,7 +82,7 @@ export default async function Home() {
         <ul>
           {lastsArticles.map((article, index) => (
             <li key={article.id}>
-              <p>{getDate(article.date)}</p>
+              <When date={article.date} />
               <h3>{article.title}</h3>
               <Link href={`/le-van-trico/${article.slug}`}>Voir plus</Link>
               <p>{article.intro}</p>
