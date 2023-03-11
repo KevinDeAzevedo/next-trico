@@ -20,9 +20,12 @@ export default async function Navigation() {
           <li>
             <Link href="/">Accueil</Link>
           </li>
-          <li>
-            <Link href="/carnet-de-route">Carnet de route</Link>
+          <li className="dropdown">
+            Carnet de route
             <ul>
+              <li>
+                <Link href="/carnet-de-route">Tout</Link>
+              </li>
               {countries.map((country, index) => (
                 <li key={country.id}>
                   <Link href={`/carnet-de-route/${country.slug}`}>
