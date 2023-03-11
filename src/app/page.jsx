@@ -56,6 +56,7 @@ export default async function Home() {
   const data = await getHomepage();
   const page = data.data;
   const covers = page.images.data;
+  const avatar = page.avatar.data;
   const carnet = await getCarnet();
   const carnetIntro = carnet.data.intro;
   const trico = await getTrico();
@@ -99,6 +100,16 @@ export default async function Home() {
             </li>
           ))}
         </ul>
+      </section>
+      <section>
+        <h2>{page.thirdTitle}</h2>
+        <img
+          className="avatarhome"
+          src={`http://localhost:1337${avatar.url}`}
+          alt="Avatar Kévin et Célestine"
+        />
+        <p>{page.aboutUs}</p>
+        <Link href="/contact">Se Contacter</Link>
       </section>
     </main>
   );
