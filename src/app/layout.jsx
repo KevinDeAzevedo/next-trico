@@ -1,4 +1,5 @@
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 
 import './style/main.sass';
 
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
       <body>
         <Navigation />
         {children}
+        <Footer />
       </body>
     </html>
   );
