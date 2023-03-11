@@ -1,19 +1,19 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-async function getData(params) {
+async function getCountry(params) {
   const { country } = params;
   const res = await fetch(
     `http://localhost:1337/api/slugify/slugs/country/${country}?populate=locations`
   );
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
+    notFound();
   }
   return res.json();
 }
 
 export default async function Country({ params }) {
-  const data = await getData(params);
+  const data = await getCountry(params);
   const country = data.data.attributes;
   const locations = country.locations.data;
   return (

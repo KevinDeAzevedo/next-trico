@@ -1,4 +1,4 @@
-async function getData() {
+async function getHomepage() {
   const res = await fetch('http://localhost:1337/api/homepage');
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -7,7 +7,7 @@ async function getData() {
   return res.json();
 }
 export default async function Home() {
-  const data = await getData();
+  const data = await getHomepage();
   const home = data.data;
   return (
     <main>
