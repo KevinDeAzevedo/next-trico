@@ -90,7 +90,7 @@ export default async function Home() {
             <li key={article.id}>
               <p>{getDate(article.date)}</p>
               <h3>{article.title}</h3>
-              {/* <Link href={`/le-van-trico/${article.slug}`}>Voir plus</Link> */}
+              <Link href={`/le-van-trico/${article.slug}`}>Voir plus</Link>
               <p>{article.intro}</p>
               <img
                 src={`http://localhost:1337${article.cover.data.url}`}
