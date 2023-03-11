@@ -4,7 +4,9 @@ import moment from 'moment';
 import 'moment/locale/fr';
 
 async function getHomepage() {
-  const res = await fetch('http://localhost:1337/api/homepage?populate=*');
+  const res = await fetch('http://localhost:1337/api/homepage?populate=*', {
+    cache: 'no-store',
+  });
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
@@ -13,7 +15,9 @@ async function getHomepage() {
 }
 
 async function getCarnet() {
-  const res = await fetch('http://localhost:1337/api/carnet');
+  const res = await fetch('http://localhost:1337/api/carnet', {
+    cache: 'no-store',
+  });
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
@@ -22,7 +26,9 @@ async function getCarnet() {
 }
 
 async function getTrico() {
-  const res = await fetch('http://localhost:1337/api/trico');
+  const res = await fetch('http://localhost:1337/api/trico', {
+    cache: 'no-store',
+  });
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
@@ -31,7 +37,9 @@ async function getTrico() {
 }
 
 async function getArticles() {
-  const res = await fetch('http://localhost:1337/api/articles');
+  const res = await fetch('http://localhost:1337/api/articles?populate=*', {
+    cache: 'no-store',
+  });
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
@@ -82,7 +90,13 @@ export default async function Home() {
             <li key={article.id}>
               <p>{getDate(article.date)}</p>
               <h3>{article.title}</h3>
+              {/* <Link href={`/le-van-trico/${article.slug}`}>Voir plus</Link> */}
               <p>{article.intro}</p>
+              <img
+                src={`http://localhost:1337${article.cover.data.url}`}
+                alt="Couverture d'article"
+                id={`last-articles-${index}`}
+              />
             </li>
           ))}
         </ul>

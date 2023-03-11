@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 async function getCountry(params) {
   const { country } = params;
   const res = await fetch(
-    `http://localhost:1337/api/slugify/slugs/country/${country}?populate=locations`
+    `http://localhost:1337/api/slugify/slugs/country/${country}?populate=locations`,
+    { cache: 'no-store' }
   );
   if (!res.ok) {
     notFound();
@@ -23,7 +24,7 @@ export default async function Country({ params }) {
         {locations.map((item, index) => (
           <li key={`${item}-${index}`}>
             <Link
-              href={`/carnet-de-route/${country.name}/${item.attributes.slug}`}
+              href={`/carnet-de-route/${country.slug}/${item.attributes.slug}`}
             >
               {item.attributes.title}
             </Link>
