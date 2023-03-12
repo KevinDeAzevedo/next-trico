@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 async function getLocation(params) {
   const { location } = params;
   const res = await fetch(
-    `http://localhost:1337/api/slugify/slugs/location/${location}?populate=*`
+    `${process.env.STRAPI_URL}/api/slugify/slugs/location/${location}?populate=*`
   );
   if (!res.ok) {
     notFound();

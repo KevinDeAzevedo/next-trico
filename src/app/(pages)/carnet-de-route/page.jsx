@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 async function getCountries() {
-  const res = await fetch('http://localhost:1337/api/countries', {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/countries`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -12,7 +12,7 @@ async function getCountries() {
 }
 
 async function getCarnet() {
-  const res = await fetch('http://localhost:1337/api/carnet', {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/carnet`, {
     cache: 'no-store',
   });
   if (!res.ok) {

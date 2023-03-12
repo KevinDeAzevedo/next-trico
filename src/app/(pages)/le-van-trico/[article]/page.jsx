@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 async function getArticle(params) {
   const { article } = params;
   const res = await fetch(
-    `http://localhost:1337/api/slugify/slugs/article/${article}?populate=*`,
+    `${process.env.STRAPI_URL}/api/slugify/slugs/article/${article}?populate=*`,
     {
       cache: 'no-store',
     }

@@ -1,5 +1,5 @@
 async function getLegal() {
-  const res = await fetch('http://localhost:1337/api/legal', {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/legal`, {
     cache: 'no-store',
   });
   if (!res.ok) {

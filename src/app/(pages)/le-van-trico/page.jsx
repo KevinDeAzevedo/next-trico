@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 async function getArticles() {
-  const res = await fetch(`http://localhost:1337/api/articles`, {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/articles`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -13,7 +13,7 @@ async function getArticles() {
 }
 
 async function getTrico() {
-  const res = await fetch(`http://localhost:1337/api/trico?populate=*`, {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/trico?populate=*`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -35,7 +35,7 @@ export default async function Trico() {
       <ul>
         <img
           className="herotrico"
-          src={`http://localhost:1337${hero.url}`}
+          src={`${process.env.STRAPI_URL}${hero.url}`}
           alt="Bandeau principal"
         />
         {articles.map((article, index) => (

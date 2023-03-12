@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import When from '../../components/When';
 
 async function getNews() {
-  const res = await fetch('http://localhost:1337/api/news?populate=*', {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/news?populate=*`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -14,7 +14,7 @@ async function getNews() {
 }
 
 async function getPage() {
-  const res = await fetch('http://localhost:1337/api/newspage', {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/newspage`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -26,7 +26,10 @@ async function getPage() {
 
 function processImage(contentParam) {
   // Ajoute l'URL du backend
-  return contentParam.replaceAll('/uploads', 'http://localhost:1337/uploads');
+  return contentParam.replaceAll(
+    '/uploads',
+    `${process.env.STRAPI_URL}/uploads`
+  );
 }
 
 export default async function News() {
@@ -45,7 +48,7 @@ export default async function News() {
               <MDXRemote source={processImage(post.content)} />
               <img
                 className="img-post"
-                src={`http://localhost:1337${post.cover.data.url}`}
+                src={`${process.env.STRAPI_URL}${post.cover.data.url}`}
                 alt="Couverture de la news"
               />
             </li>

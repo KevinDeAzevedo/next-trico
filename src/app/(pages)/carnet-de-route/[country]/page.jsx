@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 async function getCountry(params) {
   const { country } = params;
   const res = await fetch(
-    `http://localhost:1337/api/slugify/slugs/country/${country}?populate=locations`,
+    `${process.env.STRAPI_URL}/api/slugify/slugs/country/${country}?populate=locations`,
     { cache: 'no-store' }
   );
   if (!res.ok) {

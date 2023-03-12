@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 async function getNews() {
-  const res = await fetch('http://localhost:1337/api/news', {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/news`, {
     cache: 'no-store',
   });
   if (!res.ok) {

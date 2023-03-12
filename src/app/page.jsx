@@ -3,7 +3,7 @@ import Link from 'next/link';
 import When from './components/When';
 
 async function getHomepage() {
-  const res = await fetch('http://localhost:1337/api/homepage?populate=*', {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/homepage?populate=*`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -14,7 +14,7 @@ async function getHomepage() {
 }
 
 async function getCarnet() {
-  const res = await fetch('http://localhost:1337/api/carnet', {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/carnet`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -25,7 +25,7 @@ async function getCarnet() {
 }
 
 async function getTrico() {
-  const res = await fetch('http://localhost:1337/api/trico', {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/trico`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -36,7 +36,7 @@ async function getTrico() {
 }
 
 async function getArticles() {
-  const res = await fetch('http://localhost:1337/api/articles?populate=*', {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/articles?populate=*`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -65,7 +65,7 @@ export default async function Home() {
         <div>
           {covers.map((item, index) => (
             <img
-              src={`http://localhost:1337${item.url}`}
+              src={`${process.env.STRAPI_URL}${item.url}`}
               alt="Paysage"
               id={`cover-${index}`}
               key={item.id}
@@ -87,7 +87,7 @@ export default async function Home() {
               <Link href={`/le-van-trico/${article.slug}`}>Voir plus</Link>
               <p>{article.intro}</p>
               <img
-                src={`http://localhost:1337${article.cover.data.url}`}
+                src={`${process.env.STRAPI_URL}${article.cover.data.url}`}
                 alt="Couverture d'article"
                 id={`last-articles-${index}`}
               />
@@ -99,7 +99,7 @@ export default async function Home() {
         <h2>{page.thirdTitle}</h2>
         <img
           className="avatarhome"
-          src={`http://localhost:1337${avatar.url}`}
+          src={`${process.env.STRAPI_URL}${avatar.url}`}
           alt="Avatar Kévin et Célestine"
         />
         <p>{page.aboutUs}</p>

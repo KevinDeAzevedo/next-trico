@@ -1,5 +1,5 @@
 async function getContact() {
-  const res = await fetch('http://localhost:1337/api/contact?populate=*', {
+  const res = await fetch(`${process.env.STRAPI_URL}/api/contact?populate=*`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -15,7 +15,7 @@ export default async function Contact() {
   const avatar = contact.avatar.data;
   return (
     <main>
-      <img src={`http://localhost:1337${avatar.url}`} alt="Avatar" />
+      <img src={`${process.env.STRAPI_URL}${avatar.url}`} alt="Avatar" />
       <h1>{contact.title}</h1>
     </main>
   );
