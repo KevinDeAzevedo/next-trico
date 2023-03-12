@@ -1,10 +1,18 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+const options = {
+  headers: {
+    authorization: `Bearer ${process.env.STRAPI_TOKEN}`,
+  },
+  cache: 'no-store',
+};
+
 async function getLocation(params) {
   const { location } = params;
   const res = await fetch(
-    `${process.env.STRAPI_URL}/api/slugify/slugs/location/${location}?populate=*`
+    `${process.env.STRAPI_URL}/api/slugify/slugs/location/${location}?populate=*`,
+    options
   );
   if (!res.ok) {
     notFound();

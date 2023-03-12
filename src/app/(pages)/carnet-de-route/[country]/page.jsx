@@ -1,11 +1,18 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+const options = {
+  headers: {
+    authorization: `Bearer ${process.env.STRAPI_TOKEN}`,
+  },
+  cache: 'no-store',
+};
+
 async function getCountry(params) {
   const { country } = params;
   const res = await fetch(
     `${process.env.STRAPI_URL}/api/slugify/slugs/country/${country}?populate=locations`,
-    { cache: 'no-store' }
+    options
   );
   if (!res.ok) {
     notFound();

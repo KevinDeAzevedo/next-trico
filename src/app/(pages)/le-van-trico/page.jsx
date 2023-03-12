@@ -2,10 +2,15 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+const options = {
+  headers: {
+    authorization: `Bearer ${process.env.STRAPI_TOKEN}`,
+  },
+  cache: 'no-store',
+};
+
 async function getArticles() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/articles`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(`${process.env.STRAPI_URL}/api/articles`, options);
   if (!res.ok) {
     notFound();
   }
@@ -13,9 +18,10 @@ async function getArticles() {
 }
 
 async function getTrico() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/trico?populate=*`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(
+    `${process.env.STRAPI_URL}/api/trico?populate=*`,
+    options
+  );
   if (!res.ok) {
     notFound();
   }

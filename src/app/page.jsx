@@ -2,10 +2,18 @@
 import Link from 'next/link';
 import When from './components/When';
 
+const options = {
+  headers: {
+    authorization: `Bearer ${process.env.STRAPI_TOKEN}`,
+  },
+  cache: 'no-store',
+};
+
 async function getHomepage() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/homepage?populate=*`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(
+    `${process.env.STRAPI_URL}/api/homepage?populate=*`,
+    options
+  );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
@@ -14,9 +22,7 @@ async function getHomepage() {
 }
 
 async function getCarnet() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/carnet`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(`${process.env.STRAPI_URL}/api/carnet`, options);
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
@@ -25,9 +31,7 @@ async function getCarnet() {
 }
 
 async function getTrico() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/trico`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(`${process.env.STRAPI_URL}/api/trico`, options);
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
@@ -36,9 +40,10 @@ async function getTrico() {
 }
 
 async function getArticles() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/articles?populate=*`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(
+    `${process.env.STRAPI_URL}/api/articles?populate=*`,
+    options
+  );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');

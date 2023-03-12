@@ -2,10 +2,18 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import When from '../../components/When';
 
+const options = {
+  headers: {
+    authorization: `Bearer ${process.env.STRAPI_TOKEN}`,
+  },
+  cache: 'no-store',
+};
+
 async function getNews() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/news?populate=*`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(
+    `${process.env.STRAPI_URL}/api/news?populate=*`,
+    options
+  );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
@@ -14,9 +22,7 @@ async function getNews() {
 }
 
 async function getPage() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/newspage`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(`${process.env.STRAPI_URL}/api/newspage`, options);
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');

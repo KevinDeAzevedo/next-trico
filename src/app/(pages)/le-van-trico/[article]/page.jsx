@@ -1,13 +1,18 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+const options = {
+  headers: {
+    authorization: `Bearer ${process.env.STRAPI_TOKEN}`,
+  },
+  cache: 'no-store',
+};
+
 async function getArticle(params) {
   const { article } = params;
   const res = await fetch(
     `${process.env.STRAPI_URL}/api/slugify/slugs/article/${article}?populate=*`,
-    {
-      cache: 'no-store',
-    }
+    options
   );
   if (!res.ok) {
     notFound();

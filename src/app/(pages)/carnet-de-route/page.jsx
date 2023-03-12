@@ -1,9 +1,14 @@
 import Link from 'next/link';
 
+const options = {
+  headers: {
+    authorization: `Bearer ${process.env.STRAPI_TOKEN}`,
+  },
+  cache: 'no-store',
+};
+
 async function getCountries() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/countries`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(`${process.env.STRAPI_URL}/api/countries`, options);
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
@@ -12,9 +17,7 @@ async function getCountries() {
 }
 
 async function getCarnet() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/carnet`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(`${process.env.STRAPI_URL}/api/carnet`, options);
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
