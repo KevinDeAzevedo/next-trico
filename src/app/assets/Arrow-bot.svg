@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="26px" viewBox="0 0 28 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Arrow</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Accueil" transform="translate(-1442.000000, -1075.000000)" fill="#C2B98B">
+            <g id="Hero" transform="translate(0.000000, 279.939236)">
+                <g id="Group-2" transform="translate(1398.204688, 750.147955)">
+                    <polygon id="Arrow" transform="translate(57.897656, 57.897656) rotate(-270.000000) translate(-57.897656, -57.897656) " points="56.5076754 71.7446578 53.5378269 68.7748093 62.3148356 59.9966547 45.4406356 59.9976563 45.4406356 55.7976563 62.3134356 55.7966547 53.5378269 47.0205032 56.5076754 44.0506547 70.3546769 57.8976562"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

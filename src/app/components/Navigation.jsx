@@ -1,4 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import logo from '../assets/Logo-trico.svg';
+import instagram from '../assets/Instagram.svg';
+import tiktok from '../assets/Tiktok.svg';
+import arrowDropdown from '../assets/Arrow-dropdown.svg';
 
 const options = {
   headers: {
@@ -21,48 +26,58 @@ export default async function Navigation() {
   const countries = data.data;
 
   return (
-    <>
+    <div className="navigation">
+      <Link href="/">
+        <Image className="logo" src={logo} alt="Logo Trico on the road" />
+      </Link>
       <nav>
         <ul>
           <li>
-            <Link href="/">Accueil</Link>
+            <Link href="/" className="link-page">
+              Accueil
+            </Link>
           </li>
-          <li className="dropdown">
-            Carnet de route
+          <li className="link-dropdown">
+            Carnet de route <Image src={arrowDropdown} width={13} alt="" />
             <ul>
-              <li>
-                <Link href="/carnet-de-route">Tout</Link>
-              </li>
+              <Link href="/carnet-de-route">
+                <li>Tout</li>
+              </Link>
               {countries.map((country, index) => (
-                <li key={country.id}>
-                  <Link href={`/carnet-de-route/${country.slug}`}>
-                    {country.name}
-                  </Link>
-                </li>
+                <Link
+                  key={country.id}
+                  href={`/carnet-de-route/${country.slug}`}
+                >
+                  <li>{country.name}</li>
+                </Link>
               ))}
             </ul>
           </li>
           <li>
-            <Link href="/le-van-trico">Le van Trico</Link>
+            <Link href="/le-van-trico" className="link-page">
+              Le van Trico
+            </Link>
           </li>
           <li>
-            <Link href="/contact">Nous écrire</Link>
+            <Link href="/contact" className="link-page">
+              Nous écrire
+            </Link>
           </li>
-          <li>
+          <li className="social">
             <a
               href="https://www.instagram.com/trico_ontheroad/"
               target="_blank"
             >
-              Instagram
+              <Image className="social-icon" src={instagram} alt="Instagram" />
             </a>
           </li>
-          <li>
+          <li className="social">
             <a href="https://www.tiktok.com/@trico_ontheroad" target="_blank">
-              Tiktok
+              <Image className="social-icon" src={tiktok} alt="Tiktok" />
             </a>
           </li>
         </ul>
       </nav>
-    </>
+    </div>
   );
 }

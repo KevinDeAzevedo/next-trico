@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1728px" height="704px" viewBox="0 0 1728 704" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Path 2</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-dasharray="32">
+        <g id="Accueil" transform="translate(0.000000, -431.000000)" stroke="#EDEDED" stroke-width="10">
+            <g id="Hero" transform="translate(0.000000, 279.939236)">
+                <path d="M0,688.060764 C62.4205953,841.305528 206.023315,885.452817 430.80816,820.502632 C767.985427,723.077354 937.392262,295.740451 1186.40625,195.713108 C1352.41558,129.028212 1532.94683,146.56467 1728,248.322483" id="Path-2"></path>
+            </g>
+        </g>
+    </g>
+</svg>

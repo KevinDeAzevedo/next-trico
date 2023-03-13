@@ -21,15 +21,17 @@ export default async function Marquee() {
   const news = data.data;
   const lastNews = news.slice(-1);
   return (
-    <>
+    <div className="marquee">
       <p>
         {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
-        <span>// Breaking News : </span>
+        <span>
+          <strong>// Breaking News : </strong>
+        </span>
         {lastNews.map((item, index) => (
           <span key={item.id}>{item.title} </span>
         ))}
         <Link href="/news">Plus d&apos;infos</Link>
       </p>
-    </>
+    </div>
   );
 }
