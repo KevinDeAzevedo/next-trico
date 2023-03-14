@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import When from './components/When';
+import BotButton from './components/BotButton';
 
 const options = {
   headers: {
@@ -92,24 +93,12 @@ export default async function Home() {
               alt=""
             />
           </div>
+          <div className="home-hero-03-button">
+            <BotButton link="#secondsection" ui="-big" />
+          </div>
         </div>
-        {/* <div>
-          <h1>{page.firstTitle}</h1>
-          <Link href="/carnet-de-route">Carnet de route</Link>
-        </div>
-        <div>
-          {covers.map((item, index) => (
-            <img
-              src={`${process.env.STRAPI_URL}${item.url}`}
-              alt="Paysage"
-              id={`cover-${index}`}
-              key={item.id}
-            />
-          ))}
-        </div>
-        <p>{carnetIntro}</p> */}
       </section>
-      <section>
+      <section id="secondsection">
         <h2>{page.secondTitle}</h2>
         {trico.data.isFinished ? <p>Finalisé</p> : <p>En cours</p>}
         <p>{tricoIntro}</p>
