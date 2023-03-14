@@ -54,7 +54,6 @@ async function getArticles() {
 export default async function Home() {
   const data = await getHomepage();
   const page = data.data;
-  const covers = page.images.data;
   const avatar = page.avatar.data;
   const carnet = await getCarnet();
   const carnetIntro = carnet.data.intro;
@@ -64,9 +63,40 @@ export default async function Home() {
   const lastsArticles = articles.data.slice(-2);
   return (
     <main>
-      <section>
-        <h1>{page.firstTitle}</h1>
-        <Link href="/carnet-de-route">Carnet de route</Link>
+      <section className="home-hero">
+        <div className="home-hero-01">
+          <div className="home-hero-01-heading">
+            <h1>{page.firstTitle}</h1>
+            <Link href="/carnet-de-route">Carnet de route</Link>
+          </div>
+          <div className="home-hero-image">
+            <img
+              src={`${process.env.STRAPI_URL}${page.firstCover.data.url}`}
+              alt=""
+            />
+          </div>
+        </div>
+        <div className="home-hero-02">
+          <div className="home-hero-image">
+            <img
+              src={`${process.env.STRAPI_URL}${page.secondCover.data.url}`}
+              alt=""
+            />
+          </div>
+          <p>{carnetIntro}</p>
+        </div>
+        <div className="home-hero-03">
+          <div className="home-hero-image">
+            <img
+              src={`${process.env.STRAPI_URL}${page.thirdCover.data.url}`}
+              alt=""
+            />
+          </div>
+        </div>
+        {/* <div>
+          <h1>{page.firstTitle}</h1>
+          <Link href="/carnet-de-route">Carnet de route</Link>
+        </div>
         <div>
           {covers.map((item, index) => (
             <img
@@ -77,7 +107,7 @@ export default async function Home() {
             />
           ))}
         </div>
-        <p>{carnetIntro}</p>
+        <p>{carnetIntro}</p> */}
       </section>
       <section>
         <h2>{page.secondTitle}</h2>

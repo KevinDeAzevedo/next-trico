@@ -9,6 +9,8 @@
 $primary-color: #13241D
 $secondary-color: #F2E8B5
 
+$breakpoints: (mobile: 550px, tablet: 900px)
+
 body
   font-family: 'Satoshi-Variable'
   background-color: white
@@ -17,15 +19,23 @@ body
   -moz-osx-font-smoothing: grayscale
   text-rendering: optimizeLegibility
 
+*
+  &::selection
+    background-color: $secondary-color
+
 main
   position: relative
   margin: 0 auto
   padding: 0 30px
   max-width: 1300px
+  @media screen and (max-width: map-get($breakpoints, mobile))
+    padding: 0 20px
 
 h1, h2
   font-weight: 800
   font-size: 2.5em
+  @media screen and (max-width: map-get($breakpoints, mobile))
+    font-size: 2em
 
 h3
   font-weight: 800
@@ -33,7 +43,8 @@ h3
 
 p
   font-weight: 100
-  font-size: 1em
+  font-size: 1.3em
+  line-height: 1.5em
 
 a
   display: inline-block
