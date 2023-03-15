@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <>
+    <div className="footer">
       <nav>
         <ul>
           <li>
@@ -20,6 +20,6 @@ export default function Footer() {
         </ul>
       </nav>
       <Link href="/mentions-legales">Mentions légales</Link>
-    </>
+    </div>
   );
 }

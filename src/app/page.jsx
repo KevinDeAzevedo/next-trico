@@ -122,15 +122,21 @@ export default async function Home() {
           </ul>
         </div>
       </section>
-      <section>
-        <h2>{page.thirdTitle}</h2>
-        <img
-          className="avatarhome"
-          src={`${process.env.STRAPI_URL}${avatar.url}`}
-          alt="Avatar Kévin et Célestine"
-        />
-        <p>{page.aboutUs}</p>
-        <Link href="/contact">Se Contacter</Link>
+      <section className="thirdpart">
+        <div className="thirdpart-title">
+          <h2>{page.thirdTitle}</h2>
+        </div>
+        <div className="thirdpart-image">
+          <img
+            className="avatarhome"
+            src={`${process.env.STRAPI_URL}${avatar.url}`}
+            alt="Avatar Kévin et Célestine"
+          />
+        </div>
+        <div className="thirdpart-content">
+          <p>{page.aboutUs}</p>
+          <Link href="/contact">Se Contacter</Link>
+        </div>
       </section>
     </main>
   );
