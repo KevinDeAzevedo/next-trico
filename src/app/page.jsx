@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import BotButton from './components/BotButton';
 import PostCard from './components/PostCard';
+import Status from './components/Status';
 
 const options = {
   headers: {
@@ -101,7 +102,7 @@ export default async function Home() {
       <section id="fabrication-du-van-trico" className="secondpart">
         <div className="secondpart-heading">
           <h2>{page.secondTitle}</h2>
-          {trico.data.isFinished ? <p>Finalisé</p> : <p>En cours</p>}
+          <Status status={trico.data.isFinished} />
           <p>{tricoIntro}</p>
           <Link href="/le-van-trico">Le van Trico</Link>
         </div>
