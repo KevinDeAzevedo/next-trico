@@ -9,8 +9,8 @@ function getDate(dateProp) {
 export default function When(props) {
   const date = props.date;
   return (
-    <>
+    <div className="date">
       <p>{getDate(date)}</p>
-    </>
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
-import When from './components/When';
 import BotButton from './components/BotButton';
+import PostCard from './components/PostCard';
 
 const options = {
   headers: {
@@ -94,30 +94,32 @@ export default async function Home() {
             />
           </div>
           <div className="home-hero-03-button">
-            <BotButton link="#secondsection" ui="-big" />
+            <BotButton link="#fabrication-du-van-trico" ui="-big" />
           </div>
         </div>
       </section>
-      <section id="secondsection">
-        <h2>{page.secondTitle}</h2>
-        {trico.data.isFinished ? <p>Finalisé</p> : <p>En cours</p>}
-        <p>{tricoIntro}</p>
-        <Link href="/le-van-trico">Le van Trico</Link>
-        <ul>
-          {lastsArticles.map((article, index) => (
-            <li key={article.id}>
-              <When date={article.date} />
-              <h3>{article.title}</h3>
-              <Link href={`/le-van-trico/${article.slug}`}>Voir plus</Link>
-              <p>{article.intro}</p>
-              <img
-                src={`${process.env.STRAPI_URL}${article.cover.data.url}`}
-                alt="Couverture d'article"
-                id={`last-articles-${index}`}
-              />
-            </li>
-          ))}
-        </ul>
+      <section id="fabrication-du-van-trico" className="secondpart">
+        <div className="secondpart-heading">
+          <h2>{page.secondTitle}</h2>
+          {trico.data.isFinished ? <p>Finalisé</p> : <p>En cours</p>}
+          <p>{tricoIntro}</p>
+          <Link href="/le-van-trico">Le van Trico</Link>
+        </div>
+        <div>
+          <ul className="secondpart-list">
+            {lastsArticles.map((article, index) => (
+              <li key={article.id}>
+                <PostCard
+                  date={article.date}
+                  title={article.title}
+                  slug={article.slug}
+                  intro={article.intro}
+                  cover={article.cover.data.url}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
       <section>
         <h2>{page.thirdTitle}</h2>

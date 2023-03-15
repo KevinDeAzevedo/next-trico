@@ -1,0 +1,30 @@
+.postcard
+  display: flex
+  &-image
+    position: relative
+    width: 50%
+    min-height: 450px
+    border-radius: 30px
+    overflow: hidden
+    @media screen and (max-width: map-get($breakpoints, mobile))
+      min-height: 350px
+    img
+      position: absolute
+      object-fit: cover
+      width: 100%
+      height: 100%
+  &-content
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    width: 50%
+    padding-left: 20px
+    &-title
+      margin: 15px 0
+      @media screen and (max-width: map-get($breakpoints, mobile))
+        font-size: 1.3em
+    &-intro
+      font-size: 1.1em
+      font-weight: 600
+      @media screen and (max-width: map-get($breakpoints, tablet))
+        font-size: 0.9em
