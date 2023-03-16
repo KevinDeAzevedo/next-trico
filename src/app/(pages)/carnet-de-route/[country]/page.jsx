@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import HeroBanner from '../../../components/HeroBanner';
 
 const options = {
   headers: {
@@ -11,7 +12,7 @@ const options = {
 async function getCountry(params) {
   const { country } = params;
   const res = await fetch(
-    `${process.env.STRAPI_URL}/api/slugify/slugs/country/${country}?populate=locations`,
+    `${process.env.STRAPI_URL}/api/slugify/slugs/country/${country}?populate=*`,
     options
   );
   if (!res.ok) {
@@ -26,7 +27,10 @@ export default async function Country({ params }) {
   const locations = country.locations.data;
   return (
     <main>
-      <h1>{country.name}</h1>
+      <HeroBanner
+        title={country.name}
+        cover={country.cover.data.attributes.url}
+      />
       <ul>
         {locations.map((item, index) => (
           <li key={`${item}-${index}`}>
