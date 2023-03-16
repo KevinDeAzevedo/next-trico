@@ -1,6 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
+import Image from 'next/image';
 import BotButton from '@/app/components/BotButton';
+import lefttruck from '../../assets/Left-truck.webp';
+import righttruck from '../../assets/Right-truck.webp';
+import biggribouille from '../../assets/Big-gribouille.webp';
 
 const options = {
   headers: {
@@ -62,6 +66,27 @@ export default async function Carnet() {
             </li>
           ))}
         </ul>
+      </section>
+      <section className="trico-catchy">
+        <div className="trico-catchy-left">
+          <div className="trico-catchy-left-image">
+            <Image src={lefttruck} alt="" />
+          </div>
+        </div>
+        <div className="trico-catchy-right">
+          <div className="trico-catchy-right-image">
+            <Image src={righttruck} alt="" />
+          </div>
+        </div>
+        <div className="trico-catchy-center">
+          <Image src={biggribouille} alt="" />
+          <div className="trico-catchy-center-title">
+            <h2>La fabrication du van</h2>
+          </div>
+          <div className="trico-catchy-center-button">
+            <p>bouton ici</p>
+          </div>
+        </div>
       </section>
     </main>
   );
