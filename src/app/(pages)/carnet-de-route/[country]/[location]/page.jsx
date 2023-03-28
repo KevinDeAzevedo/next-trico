@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import Return from '@/app/components/Return';
 
 const options = {
   headers: {
@@ -27,9 +28,7 @@ export default async function Country({ params }) {
   return (
     <main>
       <h1>{location.title}</h1>
-      <Link href={`/carnet-de-route/${country.slug}`}>
-        Retour : {country.name}
-      </Link>
+      <Return title={country.name} link={`/carnet-de-route/${country.slug}`} />
     </main>
   );
 }

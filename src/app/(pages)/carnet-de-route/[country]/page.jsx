@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import HeroBanner from '@/app/components/HeroBanner';
 import PostCard from '@/app/components/PostCard';
+import Return from '@/app/components/Return';
 
 const options = {
   headers: {
@@ -103,7 +104,7 @@ export default async function Country({ params }) {
           </li>
         ))}
       </ul>
-      <Link href="/carnet-de-route">Autres routes : retour</Link>
+      <Return title="Autres routes" link="/carnet-de-route" />
     </main>
   );
 }
