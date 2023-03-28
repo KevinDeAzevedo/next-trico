@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import HeroBanner from '@/app/components/HeroBanner';
 import Return from '@/app/components/Return';
 
 const options = {
@@ -27,7 +28,16 @@ export default async function Country({ params }) {
   const country = location.country.data.attributes;
   return (
     <main>
-      <h1>{location.title}</h1>
+      <HeroBanner
+        title={location.title}
+        countryname={country.name}
+        cover={location.cover.data.attributes.url}
+        countryslug={country.slug}
+        locationslug={location.slug}
+        botbutton={false}
+        date={location.date}
+        gmap={location.gmaps}
+      />
       <Return title={country.name} link={`/carnet-de-route/${country.slug}`} />
     </main>
   );

@@ -63,7 +63,7 @@ export default async function Country({ params }) {
   return (
     <main>
       <HeroBanner
-        title={country.name}
+        countryname={country.name}
         cover={country.cover.data.attributes.url}
         countryslug={country.slug}
         botbutton={true}
