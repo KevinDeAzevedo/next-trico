@@ -113,7 +113,7 @@ export default async function Home() {
                 <PostCard
                   date={article.date}
                   title={article.title}
-                  slug={article.slug}
+                  link={`/le-van-trico/${article.slug}`}
                   intro={article.intro}
                   cover={article.cover.data.url}
                 />

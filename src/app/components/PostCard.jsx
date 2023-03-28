@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import When from './When';
 
-export default function PostCard({ date, title, intro, cover, slug }) {
+export default function PostCard({ date, title, intro, cover, link }) {
   return (
     <div className="postcard">
       <div className="postcard-image">
@@ -15,7 +15,7 @@ export default function PostCard({ date, title, intro, cover, slug }) {
         <div>
           <When date={date} />
           <h3 className="postcard-content-title">{title}</h3>
-          <Link href={`/le-van-trico/${slug}`}>Voir plus</Link>
+          <Link href={link}>Voir plus</Link>
         </div>
         <p className="postcard-content-intro">{intro}</p>
       </div>
