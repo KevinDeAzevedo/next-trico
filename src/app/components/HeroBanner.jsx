@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
+import Image from 'next/image';
 import BotButton from '@/app/components/BotButton';
+import LocationIcn from '@/app/assets/Location-icon.svg';
 import When from './When';
 
 export default function HeroBanner({
@@ -33,8 +35,14 @@ export default function HeroBanner({
       <div className="hero-banner-title">
         {botbutton === false ? <h1>{title}</h1> : <h1>{countryname}</h1>}
         {botbutton ? <BotButton link="#" ui="-tiny" /> : <When date={date} />}
-        {gmap}
       </div>
+      {gmap === undefined ? null : (
+        <a href={gmap} target="_blank">
+          <div className="hero-banner-location">
+            <Image src={LocationIcn} alt="Lieux" />
+          </div>
+        </a>
+      )}
       <div className="hero-banner-image">
         <img src={`${process.env.STRAPI_URL}${cover}`} alt="" />
       </div>
