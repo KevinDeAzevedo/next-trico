@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import HeroBanner from '@/app/components/HeroBanner';
 import Return from '@/app/components/Return';
 
@@ -22,6 +23,14 @@ async function getLocation(params) {
   return res.json();
 }
 
+function processImage(contentParam) {
+  // Ajoute l'URL du backend
+  return contentParam.replaceAll(
+    '/uploads',
+    `${process.env.STRAPI_URL}/uploads`
+  );
+}
+
 export default async function Country({ params }) {
   const data = await getLocation(params);
   const location = data.data.attributes;
@@ -38,6 +47,9 @@ export default async function Country({ params }) {
         date={location.date}
         gmap={location.gmaps}
       />
+      <section className="article-content">
+        <MDXRemote source={processImage(location.content)} />
+      </section>
       <Return title={country.name} link={`/carnet-de-route/${country.slug}`} />
     </main>
   );

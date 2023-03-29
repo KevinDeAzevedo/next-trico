@@ -36,7 +36,7 @@ export default function HeroBanner({
         {botbutton === false ? <h1>{title}</h1> : <h1>{countryname}</h1>}
         {botbutton ? <BotButton link="#" ui="-tiny" /> : <When date={date} />}
       </div>
-      {gmap === undefined ? null : (
+      {gmap === undefined || gmap === null ? null : (
         <a href={gmap} target="_blank">
           <div className="hero-banner-location">
             <Image src={LocationIcn} alt="Lieux" />
