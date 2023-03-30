@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import HeroBanner from '@/app/components/HeroBanner';
 import Return from '@/app/components/Return';
+import Slideshow from '@/app/components/Slideshow';
 
 const options = {
   headers: {
@@ -35,6 +36,15 @@ export default async function Country({ params }) {
   const data = await getLocation(params);
   const location = data.data.attributes;
   const country = location.country.data.attributes;
+  const picturesSlideshow = location.slideshow.data;
+  const arrayOfPictures = [];
+  if (picturesSlideshow != null) {
+    for (let picture of picturesSlideshow) {
+      arrayOfPictures.push(
+        `${process.env.STRAPI_URL}${picture.attributes.url}`
+      );
+    }
+  }
   return (
     <main>
       <HeroBanner
@@ -49,6 +59,7 @@ export default async function Country({ params }) {
       />
       <section className="article-content">
         <MDXRemote source={processImage(location.content)} />
+        <Slideshow picture={arrayOfPictures} />
       </section>
       <Return title={country.name} link={`/carnet-de-route/${country.slug}`} />
     </main>
