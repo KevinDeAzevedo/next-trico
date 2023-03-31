@@ -48,12 +48,22 @@ export default async function Country({ params }) {
   return (
     <main>
       <HeroBanner
+        style="v2"
+        ariane={
+          <div>
+            <Link href="/carnet-de-route">Carnet de route</Link>
+            <span> / </span>
+            <Link href={`/carnet-de-route/${country.slug}`}>
+              {country.name}
+            </Link>
+            <span> / </span>
+            <Link href={`/carnet-de-route/${country.slug}/${location.slug}`}>
+              {location.title}
+            </Link>
+          </div>
+        }
         title={location.title}
-        countryname={country.name}
         cover={location.cover.data.attributes.url}
-        countryslug={country.slug}
-        locationslug={location.slug}
-        botbutton={false}
         date={location.date}
         gmap={location.gmaps}
       />

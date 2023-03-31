@@ -37,13 +37,19 @@ export default async function Article({ params }) {
   const article = data.data.attributes;
   return (
     <main>
-      <h1>{article.title}</h1>
-      {/* <HeroBanner
-        countryname={country.name}
-        cover={country.cover.data.attributes.url}
-        countryslug={country.slug}
-        botbutton={true}
-      /> */}
+      <HeroBanner
+        style="v2"
+        ariane={
+          <div>
+            <Link href="/le-van-trico">Le van Trico</Link>
+            <span> / </span>
+            <Link href={`/le-van-trico/${article.slug}`}>{article.title}</Link>
+          </div>
+        }
+        title={article.title}
+        cover={article.cover.data.attributes.url}
+        date={article.date}
+      />
       <Link href="/le-van-trico">Retour : Le van Trico</Link>
     </main>
   );
