@@ -1,3 +1,5 @@
+import { MDXRemote } from 'next-mdx-remote/rsc';
+
 const options = {
   headers: {
     authorization: `Bearer ${process.env.STRAPI_TOKEN}`,
@@ -14,13 +16,21 @@ async function getLegal() {
   return res.json();
 }
 
+function processImage(contentParam) {
+  // Ajoute l'URL du backend
+  return contentParam.replaceAll(
+    '/uploads',
+    `${process.env.STRAPI_URL}/uploads`
+  );
+}
+
 export default async function Legal() {
   const data = await getLegal();
   const legal = data.data;
   return (
-    <main>
+    <main className="legal">
       <h1>{legal.title}</h1>
-      <p>{legal.content}</p>
+      <MDXRemote source={processImage(legal.content)} />
     </main>
   );
 }
