@@ -43,9 +43,9 @@ export default async function Carnet() {
     <main>
       <section className="hero">
         <h1>{page.title}</h1>
-        <BotButton link="#liste-pays" ui="-tiny" />
+        <BotButton link="#list" ui="-tiny" />
       </section>
-      <section id="liste-pays">
+      <section id="list">
         <ul className="countries">
           {countries.map((country, index) => (
             <li key={country.id} className="country">

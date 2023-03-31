@@ -75,6 +75,7 @@ export default async function Country({ params }) {
         }
         title={country.name}
         cover={country.cover.data.attributes.url}
+        botButtonLink="#list"
       />
       <div className="intro">
         <div className="intro-content">
@@ -99,19 +100,21 @@ export default async function Country({ params }) {
           <div className="intro-data-separator"></div>
         </div>
       </div>
-      <ul className="list">
-        {locations.map((item, index) => (
-          <li key={item.id} className="list-post">
-            <PostCard
-              date={item.attributes.date}
-              title={item.attributes.title}
-              link={`/carnet-de-route/${country.slug}/${item.attributes.slug}`}
-              intro={item.attributes.intro}
-              cover={item.attributes.cover.data.attributes.url}
-            />
-          </li>
-        ))}
-      </ul>
+      <section id="list">
+        <ul className="list">
+          {locations.map((item, index) => (
+            <li key={item.id} className="list-post">
+              <PostCard
+                date={item.attributes.date}
+                title={item.attributes.title}
+                link={`/carnet-de-route/${country.slug}/${item.attributes.slug}`}
+                intro={item.attributes.intro}
+                cover={item.attributes.cover.data.attributes.url}
+              />
+            </li>
+          ))}
+        </ul>
+      </section>
       <Return title="Autres routes" link="/carnet-de-route" />
     </main>
   );

@@ -12,6 +12,7 @@ export default function HeroBanner({
   cover,
   date,
   gmap,
+  botButtonLink,
 }) {
   return (
     <div className="hero-banner">
@@ -19,7 +20,7 @@ export default function HeroBanner({
       <div className="hero-banner-title">
         <h1>{title}</h1>
         {style === 'v1' ? (
-          <BotButton link="#" ui="-tiny" />
+          <BotButton link={botButtonLink} ui="-tiny" />
         ) : (
           <When date={date} />
         )}
