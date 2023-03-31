@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import PostCard from '@/app/components/PostCard';
 
 const options = {
   headers: {
@@ -10,7 +11,10 @@ const options = {
 };
 
 async function getArticles() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/articles`, options);
+  const res = await fetch(
+    `${process.env.STRAPI_URL}/api/articles?populate=*`,
+    options
+  );
   if (!res.ok) {
     notFound();
   }
@@ -38,15 +42,21 @@ export default async function Trico() {
     <main>
       <h1>{page.title}</h1>
       {page.isFinished ? <p>Finalisé</p> : <p>En cours</p>}
-      <ul>
-        <img
-          className="herotrico"
-          src={`${process.env.STRAPI_URL}${hero.url}`}
-          alt="Bandeau principal"
-        />
-        {articles.map((article, index) => (
-          <li key={article.id}>
-            <Link href={`/le-van-trico/${article.slug}`}>{article.title}</Link>
+      <img
+        className="herotrico"
+        src={`${process.env.STRAPI_URL}${hero.url}`}
+        alt="Bandeau principal"
+      />
+      <ul className="list">
+        {articles.map((item, index) => (
+          <li key={item.id} className="list-post">
+            <PostCard
+              date={item.date}
+              title={item.title}
+              link={`/le-van-trico/${item.slug}`}
+              intro={item.intro}
+              cover={item.cover.data.url}
+            />
           </li>
         ))}
       </ul>

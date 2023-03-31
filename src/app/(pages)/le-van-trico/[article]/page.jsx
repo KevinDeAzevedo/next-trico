@@ -1,5 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import HeroBanner from '@/app/components/HeroBanner';
+import Return from '@/app/components/Return';
+import Slideshow from '@/app/components/Slideshow';
 
 const options = {
   headers: {
@@ -7,6 +11,14 @@ const options = {
   },
   cache: 'no-store',
 };
+
+function processImage(contentParam) {
+  // Ajoute l'URL du backend
+  return contentParam.replaceAll(
+    '/uploads',
+    `${process.env.STRAPI_URL}/uploads`
+  );
+}
 
 async function getArticle(params) {
   const { article } = params;
@@ -26,6 +38,12 @@ export default async function Article({ params }) {
   return (
     <main>
       <h1>{article.title}</h1>
+      {/* <HeroBanner
+        countryname={country.name}
+        cover={country.cover.data.attributes.url}
+        countryslug={country.slug}
+        botbutton={true}
+      /> */}
       <Link href="/le-van-trico">Retour : Le van Trico</Link>
     </main>
   );
