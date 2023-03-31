@@ -1,0 +1,44 @@
+.hero-news
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin: 2% 0 5% 0
+  h1
+    margin: 2%
+
+.news-list
+  width: 70%
+  margin: auto
+  @media screen and (max-width: map-get($breakpoints, tablet))
+    width: 100%
+
+.news-card
+  margin-bottom: 10%
+  &-title
+    margin-bottom: 5%
+    h2
+      font-size: 2em
+  &-content
+    display: flex
+    flex-direction: row
+    gap: 4%
+    @media screen and (max-width: map-get($breakpoints, mobile))
+      flex-direction: column
+    &-image
+      position: relative
+      width: 40%
+      height: 520px
+      border-radius: 30px
+      overflow: hidden
+      @media screen and (max-width: map-get($breakpoints, mobile))
+        width: 100%
+    img
+      position: absolute
+      object-fit: cover
+      width: 100%
+      height: 100%
+    &-text
+      width: 60%
+      @media screen and (max-width: map-get($breakpoints, mobile))
+        width: 100%
+        margin-top: 5%

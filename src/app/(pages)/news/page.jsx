@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import When from '../../components/When';
+import BotButton from '@/app/components/BotButton';
 
 const options = {
   headers: {
@@ -44,23 +45,35 @@ export default async function News() {
   const page = await getPage();
   return (
     <main>
-      <h1>{page.data.title}</h1>
-      <ul>
-        {news
-          .map((post, index) => (
-            <li key={post.id}>
-              <When date={post.date} />
-              <h2>{post.title}</h2>
-              <MDXRemote source={processImage(post.content)} />
-              <img
-                className="img-post"
-                src={`${process.env.STRAPI_URL}${post.cover.data.url}`}
-                alt="Couverture de la news"
-              />
-            </li>
-          ))
-          .reverse()}
-      </ul>
+      <div className="hero-news">
+        <h1>{page.data.title}</h1>
+        <BotButton link="#list" ui="-tiny" />
+      </div>
+      <section id="list" className="news-list">
+        <ul>
+          {news
+            .map((post, index) => (
+              <li key={post.id} className="news-card">
+                <div className="news-card-title">
+                  <When date={post.date} />
+                  <h2>{post.title}</h2>
+                </div>
+                <div className="news-card-content">
+                  <div className="news-card-content-image">
+                    <img
+                      src={`${process.env.STRAPI_URL}${post.cover.data.url}`}
+                      alt="Couverture de la news"
+                    />
+                  </div>
+                  <div className="news-card-content-text">
+                    <MDXRemote source={processImage(post.content)} />
+                  </div>
+                </div>
+              </li>
+            ))
+            .reverse()}
+        </ul>
+      </section>
     </main>
   );
 }
