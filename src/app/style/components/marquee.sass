@@ -1,9 +1,39 @@
 .marquee
   display: flex
-  justify-content: center
   align-items: center
-  text-align: center
   color: white
   width: 100%
   min-height: 50px
+  height: auto
   background-color: $primary-color
+  overflow: hidden
+  position: relative
+  &-group
+    display: block
+    width: 200%
+    position: absolute
+    overflow: hidden
+    animation: marquee 30s linear infinite
+    &-title
+      text-decoration: underline
+  p
+    font-size: 1.2em
+    float: left
+    width: 50%
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+    text-indent: 10%
+    a
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+  &:hover
+    background-color: $secondary-color
+    color: $primary-color
+
+@keyframes marquee
+  0%
+    left: 0
+  100%
+    left: -100%
