@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PostCard from '@/app/components/PostCard';
+import Status from '@/app/components/Status';
+import BotButton from '@/app/components/BotButton';
 
 const options = {
   headers: {
@@ -40,26 +42,33 @@ export default async function Trico() {
   const hero = page.image.data;
   return (
     <main>
-      <h1>{page.title}</h1>
-      {page.isFinished ? <p>Finalisé</p> : <p>En cours</p>}
-      <img
-        className="herotrico"
-        src={`${process.env.STRAPI_URL}${hero.url}`}
-        alt="Bandeau principal"
-      />
-      <ul className="list">
-        {articles.map((item, index) => (
-          <li key={item.id} className="list-post">
-            <PostCard
-              date={item.date}
-              title={item.title}
-              link={`/le-van-trico/${item.slug}`}
-              intro={item.intro}
-              cover={item.cover.data.url}
-            />
-          </li>
-        ))}
-      </ul>
+      <div className="trico-hero">
+        <h1>{page.title}</h1>
+        <Status status={page.isFinished} />
+        <div className="trico-hero-image">
+          <img
+            src={`${process.env.STRAPI_URL}${hero.url}`}
+            alt="Bandeau principal"
+          />
+        </div>
+        <BotButton link="#list" ui="-tiny" />
+      </div>
+      <section id="list">
+        {' '}
+        <ul className="list">
+          {articles.map((item, index) => (
+            <li key={item.id} className="list-post">
+              <PostCard
+                date={item.date}
+                title={item.title}
+                link={`/le-van-trico/${item.slug}`}
+                intro={item.intro}
+                cover={item.cover.data.url}
+              />
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }

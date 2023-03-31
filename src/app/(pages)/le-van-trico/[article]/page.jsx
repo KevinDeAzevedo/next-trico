@@ -35,6 +35,15 @@ async function getArticle(params) {
 export default async function Article({ params }) {
   const data = await getArticle(params);
   const article = data.data.attributes;
+  const picturesSlideshow = article.slideshow.data;
+  const arrayOfPictures = [];
+  if (picturesSlideshow != null) {
+    for (let picture of picturesSlideshow) {
+      arrayOfPictures.push(
+        `${process.env.STRAPI_URL}${picture.attributes.url}`
+      );
+    }
+  }
   return (
     <main>
       <HeroBanner
@@ -50,7 +59,11 @@ export default async function Article({ params }) {
         cover={article.cover.data.attributes.url}
         date={article.date}
       />
-      <Link href="/le-van-trico">Retour : Le van Trico</Link>
+      <section className="article-content">
+        <MDXRemote source={processImage(article.content)} />
+        <Slideshow picture={arrayOfPictures} />
+      </section>
+      <Return title="Le van Trico" link="/le-van-trico" />
     </main>
   );
 }
