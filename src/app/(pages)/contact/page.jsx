@@ -25,8 +25,15 @@ export default async function Contact() {
   const avatar = contact.avatar.data;
   return (
     <main>
-      <img src={`${process.env.STRAPI_URL}${avatar.url}`} alt="Avatar" />
-      <h1>{contact.title}</h1>
+      <div className="hero-contact">
+        <div className="hero-contact-image">
+          <img src={`${process.env.STRAPI_URL}${avatar.url}`} alt="Avatar" />
+        </div>
+        <div className="hero-contact-bubblespeech">
+          <p>👋</p>
+        </div>
+        <h1>{contact.title}</h1>
+      </div>
       <Form
         StrapiUrl={process.env.STRAPI_URL}
         StrapiToken={process.env.STRAPI_TOKEN}
