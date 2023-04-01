@@ -1,3 +1,5 @@
+import Form from '@/app/components/Form';
+
 const options = {
   headers: {
     authorization: `Bearer ${process.env.STRAPI_TOKEN}`,
@@ -25,6 +27,10 @@ export default async function Contact() {
     <main>
       <img src={`${process.env.STRAPI_URL}${avatar.url}`} alt="Avatar" />
       <h1>{contact.title}</h1>
+      <Form
+        StrapiUrl={process.env.STRAPI_URL}
+        StrapiToken={process.env.STRAPI_TOKEN}
+      />
     </main>
   );
 }
