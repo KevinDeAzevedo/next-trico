@@ -6,7 +6,11 @@ export default function Footer() {
   return (
     <div className="footer">
       <div className="footer-main">
-        <Image className="logo" src={logo} alt="Logo Trico on the road" />
+        <Image
+          className="footer-main-logo"
+          src={logo}
+          alt="Logo Trico on the road"
+        />
         <div className="footer-main-navigation">
           <nav>
             <ul>
