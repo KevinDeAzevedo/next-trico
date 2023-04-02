@@ -57,7 +57,7 @@ export default function Form({ StrapiUrl, StrapiToken }) {
         .then((response) => response.json())
         .then((data) =>
           data.data != null
-            ? (setStatus('Succès'),
+            ? (setStatus('Message envoyé !'),
               setNewName(''),
               setNewEmail(''),
               setNewMessage(''))
@@ -70,36 +70,37 @@ export default function Form({ StrapiUrl, StrapiToken }) {
   return (
     <div>
       <form className="form" onSubmit={sendForm}>
-        <label>
-          Votre Nom et Prénom :
-          <input
-            type="text"
-            placeholder="Martin Dupont"
-            value={newName}
-            onChange={(e) => setNewName(e.currentTarget.value)}
-          />
-        </label>
-        <label>
-          Votre email :
-          <input
-            type="text"
-            placeholder="martin.dupont@gmail.com"
-            value={newEmail}
-            onChange={(e) => setNewEmail(e.currentTarget.value)}
-          />
-        </label>
-        <label>
-          Votre message :
-          <textarea
-            placeholder="Message ici"
-            cols="30"
-            rows="10"
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.currentTarget.value)}
-          ></textarea>
-        </label>
-        <button type="submit">Send</button>
-        <p>{status}</p>
+        <label htmlFor="name">Votre Nom et Prénom</label>
+        <input
+          id="name"
+          type="text"
+          placeholder="Ex: Martin Dupont"
+          value={newName}
+          onChange={(e) => setNewName(e.currentTarget.value)}
+        />
+
+        <label htmlFor="email">Votre email</label>
+        <input
+          id="email"
+          type="text"
+          placeholder="Ex: martin.dupont@gmail.com"
+          value={newEmail}
+          onChange={(e) => setNewEmail(e.currentTarget.value)}
+        />
+
+        <label htmlFor="message">Votre message</label>
+        <textarea
+          id="message"
+          placeholder="Ecrivez votre message ici"
+          cols="30"
+          rows="10"
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.currentTarget.value)}
+        ></textarea>
+        <button type="submit">Envoyer</button>
+        <div className="status-form">
+          <p>{status}</p>
+        </div>
       </form>
     </div>
   );

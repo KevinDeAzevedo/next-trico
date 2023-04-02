@@ -1,2 +1,61 @@
 .form
-  border: 1px solid
+  width: 40%
+  height: auto
+  margin: auto
+  margin-top: 50px
+  display: flex
+  flex-direction: column
+  @media screen and (max-width: map-get($breakpoints, tablet))
+    width: 60%
+  @media screen and (max-width: map-get($breakpoints, mobile))
+    width: 100%
+label
+  margin: 30px 0 7px 0
+  font-weight: 700
+  font-size: 1em
+
+input, textarea
+  width: 100%
+  font-family: 'Satoshi-Variable'
+  font-size: 1em
+  padding: 10px 20px
+  border-radius: 10px
+  box-sizing: border-box
+  box-shadow: 0 15px 12px -10px rgba(42, 17, 17, 0.19)
+  background-color: #ffffff
+  border: 1px solid #c9c9c9
+  box-shadow: 0 15px 12px -10px rgba(42,17,17,0.19)
+  &:focus
+    outline: none
+    border: 1px solid $secondary-color
+    background-color: #fffdf9
+    box-shadow: 0 15px 12px -10px #FFF3E1
+  &:-webkit-autofill
+    background-color: transparent !important
+    -webkit-box-shadow: 0 0 0 50px white inset
+
+input
+  height: 53px
+
+textarea
+  height: 190px
+  padding-top: 20px
+  margin-bottom: 50px
+  resize: none
+  overflow: auto
+
+button
+  width: auto
+  margin: auto
+  border: none
+  background-color: transparent
+  cursor: pointer
+
+.status-form
+  width: 100%
+  margin: 20px 0
+  padding: 2%
+  text-align: center
+  p
+    font-weight: 700
+    font-size: 1em
