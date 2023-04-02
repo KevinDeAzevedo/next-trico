@@ -23,12 +23,12 @@ async function getCountry(params) {
   return res.json();
 }
 
-function nights(param) {
-  let totalNight = 0;
+function days(param) {
+  let totalDays = 0;
   for (let item of param) {
-    totalNight += item.attributes.nights;
+    totalDays += item.attributes.days;
   }
-  return totalNight.toLocaleString('fr');
+  return totalDays.toLocaleString('fr');
 }
 
 function distance(param) {
@@ -39,20 +39,20 @@ function distance(param) {
   return totalDistance.toLocaleString('fr');
 }
 
-function water(param) {
-  let totalWater = 0;
+function naturespot(param) {
+  let totalNatureSpot = 0;
   for (let item of param) {
-    totalWater += item.attributes.water;
+    totalNatureSpot += item.attributes.naturespot;
   }
-  return totalWater.toLocaleString('fr');
+  return totalNatureSpot.toLocaleString('fr');
 }
 
-function gas(param) {
-  let totalGas = 0;
+function culturespot(param) {
+  let totalCultureSpot = 0;
   for (let item of param) {
-    totalGas += item.attributes.gas;
+    totalCultureSpot += item.attributes.culturespot;
   }
-  return totalGas.toLocaleString('fr');
+  return totalCultureSpot.toLocaleString('fr');
 }
 
 export default async function Country({ params }) {
@@ -85,16 +85,16 @@ export default async function Country({ params }) {
         <div className="intro-data">
           <ul>
             <li>
-              <p>{nights(locations)} nuits </p>passées
+              <p>{days(locations)} jours </p>passés
             </li>
             <li>
               <p>{distance(locations)} kms</p> parcourus
             </li>
             <li>
-              <p>{water(locations)} L</p> d'eau consommée
+              <p>{naturespot(locations)}</p> spots naturels
             </li>
             <li>
-              <p>{gas(locations)} L</p> d'essence bien utilisée
+              <p>{culturespot(locations)}</p> spots culturels
             </li>
           </ul>
           <div className="intro-data-separator"></div>

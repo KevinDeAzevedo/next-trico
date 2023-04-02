@@ -4,9 +4,9 @@ export default function NotFound() {
   return (
     <main className="not-found">
       <h1>
-        <span>404</span>Le pays demandé est introuvable 😢
+        <span>404</span>La page demandée est introuvable 😢
       </h1>
-      <Return title={`Carnet de route`} link="/carnet-de-route" />
+      <Return title={`Retour à l'accueil`} link="/" />
     </main>
   );
 }

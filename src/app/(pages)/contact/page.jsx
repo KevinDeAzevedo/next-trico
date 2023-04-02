@@ -33,6 +33,7 @@ export default async function Contact() {
           <p>👋</p>
         </div>
         <h1>{contact.title}</h1>
+        <p>{contact.intro}</p>
       </div>
       <Form
         StrapiUrl={process.env.STRAPI_URL}
