@@ -1,10 +1,8 @@
 .article-content
-  background-color: white
   margin: auto
   z-index: 99
-  transform: translate(0, -40px)
   width: 70%
-  padding: 5%
+  padding: 2% 5%
   @media screen and (max-width: map-get($breakpoints, tablet))
     width: 80%
     z-index: 0
@@ -35,6 +33,32 @@
     font-size: 1.3em
     line-height: 1.5em
     list-style: inside
+  &-data
+    display: flex
+    flex-direction: row
+    justify-content: space-evenly
+    align-items: center
+    flex-wrap: wrap
+    width: 100%
+    min-height: 80px
+    padding: 2% 0
+    border-radius: 30px
+    background-color: $third-color
+    transform: translate(0, -65px)
+    @media screen and (max-width: map-get($breakpoints, mobile))
+      flex-direction: column
+      flex-wrap: nowrap
+      transform: translate(0)
+      margin: 2% 0
+      text-align: center
+    li
+      list-style: none
+      p
+        color: #A6B8B1
+        font-size: .7em
+        font-weight: 700
+        .styled
+          color: $primary-color
 
 blockquote
   background-color: $third-color

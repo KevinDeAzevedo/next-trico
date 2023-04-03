@@ -47,40 +47,6 @@ export default async function Country({ params }) {
   }
   return (
     <main>
-      <ul>
-        <li>
-          {location.distance === null ? (
-            <p>Distance : 0</p>
-          ) : (
-            <p>
-              Distance : {location.distance.toLocaleString('fr')} km(s)
-              <span> {location.motion}</span>
-            </p>
-          )}
-        </li>
-        <li>
-          {location.budget === null ? (
-            <p>Budget : 0</p>
-          ) : (
-            <p>Budget : {location.budget.toLocaleString('fr')} €</p>
-          )}
-        </li>
-        <li>
-          {location.days === null && location.hours === null ? null : (
-            <p>
-              Temps passé :
-              {location.days === null ? null : (
-                <span> {location.days} jours</span>
-              )}
-              <span>
-                {location.hours === null ? null : (
-                  <span> {location.hours} heure(s)</span>
-                )}
-              </span>
-            </p>
-          )}
-        </li>
-      </ul>
       <HeroBanner
         style="v2"
         ariane={
@@ -101,8 +67,49 @@ export default async function Country({ params }) {
         date={location.date}
         gmap={location.gmaps}
       />
-
       <section className="article-content">
+        <ul className="article-content-data">
+          <li>
+            {location.distance === null ? (
+              <p>Distance : 0</p>
+            ) : (
+              <p>
+                Distance :{' '}
+                <span className="styled">
+                  {location.distance.toLocaleString('fr')} km(s)
+                </span>
+                <span className="styled"> {location.motion}</span>
+              </p>
+            )}
+          </li>
+          <li>
+            {location.budget === null ? (
+              <p>Budget : 0</p>
+            ) : (
+              <p>
+                Budget :{' '}
+                <span className="styled">
+                  {location.budget.toLocaleString('fr')} €
+                </span>
+              </p>
+            )}
+          </li>
+          {location.days === null && location.hours === null ? null : (
+            <li>
+              <p>
+                Temps passé :
+                {location.days === null ? null : (
+                  <span className="styled"> {location.days} jours</span>
+                )}
+                <span>
+                  {location.hours === null ? null : (
+                    <span className="styled"> {location.hours} heure(s)</span>
+                  )}
+                </span>
+              </p>
+            </li>
+          )}
+        </ul>
         <MDXRemote source={processImage(location.content)} />
         <Slideshow picture={arrayOfPictures} />
       </section>
