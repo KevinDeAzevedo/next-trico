@@ -1,7 +1,7 @@
 .simple-button
   display: inline-block
   width: fit-content
-  height: auto
+  height: 30px
   margin: 5% 0
   &-content
     position: relative
@@ -10,23 +10,19 @@
     height: 100%
     font-size: 1.2em
     font-weight: 700
+    &::after
+      position: absolute
+      left: 0
+      bottom: -4px
+      content: ''
+      width: 100%
+      height: 3px
+      background-color: $secondary-color
+      transition: width .2s
   &-arrow
     width: 18px
     height: 20px
     margin-left: 10px
-      // transform: translateX(10px)
-      // transition: transform .2s
-    &::after
-      // position: absolute
-      // left: 0
-      // bottom: -6px
-      // content: ''
-      // width: 100%
-      // height: 3px
-      // background-color: $secondary-color
-      // transition: width .2s
-    // &:hover
-    //   &::after
-    //     width: 108%
-    //   img
-    //     transform: translateX(15px)
+    transition: margin-left .2s
+  &:hover &-arrow
+    margin-left: 20px
