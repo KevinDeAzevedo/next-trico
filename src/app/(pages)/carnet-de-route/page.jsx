@@ -5,6 +5,7 @@ import BotButton from '@/app/components/BotButton';
 import lefttruck from '../../assets/Left-truck.webp';
 import righttruck from '../../assets/Right-truck.webp';
 import biggribouille from '../../assets/Big-gribouille.webp';
+import Button from '@/app/components/Button';
 
 const options = {
   headers: {
@@ -79,12 +80,16 @@ export default async function Carnet() {
           </div>
         </div>
         <div className="trico-catchy-center">
-          <Image src={biggribouille} alt="" />
+          <Image
+            className="trico-catchy-center-gribouille"
+            src={biggribouille}
+            alt=""
+          />
           <div className="trico-catchy-center-title">
             <h2>La fabrication du van</h2>
           </div>
           <div className="trico-catchy-center-button">
-            <p>bouton ici</p>
+            <Button name="Voir ici" link="/le-van-trico" />
           </div>
         </div>
       </section>

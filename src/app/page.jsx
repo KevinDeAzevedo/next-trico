@@ -3,6 +3,7 @@ import Link from 'next/link';
 import BotButton from './components/BotButton';
 import PostCard from './components/PostCard';
 import Status from './components/Status';
+import Button from './components/Button';
 
 const options = {
   headers: {
@@ -69,7 +70,7 @@ export default async function Home() {
         <div className="home-hero-01">
           <div className="home-hero-01-heading">
             <h1>{page.firstTitle}</h1>
-            <Link href="/carnet-de-route">Carnet de route</Link>
+            <Button name="Carnet de route" link="/carnet-de-route" />
           </div>
           <div className="home-hero-image">
             <img
@@ -104,7 +105,7 @@ export default async function Home() {
           <h2>{page.secondTitle}</h2>
           <Status status={trico.data.isFinished} />
           <p>{tricoIntro}</p>
-          <Link href="/le-van-trico">Le van Trico</Link>
+          <Button name="Le van Trico" link="/le-van-trico" />
         </div>
         <div>
           <ul className="secondpart-list">
@@ -135,7 +136,7 @@ export default async function Home() {
         </div>
         <div className="thirdpart-content">
           <p>{page.aboutUs}</p>
-          <Link href="/contact">Se Contacter</Link>
+          <Button name="Se contacter" link="/contact" />
         </div>
       </section>
     </main>

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import When from './When';
+import Button from './Button';
 
 export default function PostCard({ date, title, intro, cover, link }) {
   return (
@@ -15,7 +16,7 @@ export default function PostCard({ date, title, intro, cover, link }) {
         <div>
           <When date={date} />
           <h3 className="postcard-content-title">{title}</h3>
-          <Link href={link}>Voir plus</Link>
+          <Button name="Voir plus" link={link} />
         </div>
         <p className="postcard-content-intro">{intro}</p>
       </div>
