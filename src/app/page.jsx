@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from 'next/link';
 import BotButton from './components/BotButton';
 import PostCard from './components/PostCard';
 import Status from './components/Status';
