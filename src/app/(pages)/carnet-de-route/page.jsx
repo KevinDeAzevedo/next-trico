@@ -55,10 +55,7 @@ export default async function Carnet() {
                   <p>{country.greeting}</p>
                 </div>
                 <div className="country-name">
-                  <Button
-                    name={country.name}
-                    link={`/carnet-de-route/${country.slug}`}
-                  />
+                  <Button name={country.name} />
                 </div>
                 <div className="country-image">
                   <img
