@@ -32,6 +32,19 @@ function processImage(contentParam) {
   );
 }
 
+// SEO ZONE
+export async function generateMetadata({ params }) {
+  const data = await getLocation(params);
+  const seoData = data.data.attributes.seo;
+  return {
+    title: seoData.metaTitle,
+    description: seoData.metaDescription,
+    robots: {
+      index: true,
+    },
+  };
+}
+
 export default async function Country({ params }) {
   const data = await getLocation(params);
   const location = data.data.attributes;

@@ -27,12 +27,28 @@ async function getCountries() {
 }
 
 async function getCarnet() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/carnet`, options);
+  const res = await fetch(
+    `${process.env.STRAPI_URL}/api/carnet?populate=*`,
+    options
+  );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
   }
   return res.json();
+}
+
+// SEO ZONE
+export async function generateMetadata() {
+  const data = await getCarnet();
+  const seoData = data.data.seo;
+  return {
+    title: seoData.metaTitle,
+    description: seoData.metaDescription,
+    robots: {
+      index: true,
+    },
+  };
 }
 
 export default async function Carnet() {

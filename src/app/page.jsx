@@ -3,6 +3,7 @@ import BotButton from './components/BotButton';
 import PostCard from './components/PostCard';
 import Status from './components/Status';
 import Button from './components/Button';
+import { object } from 'prop-types';
 
 const options = {
   headers: {
@@ -51,6 +52,19 @@ async function getArticles() {
     throw new Error('Failed to fetch data');
   }
   return res.json();
+}
+
+// SEO ZONE
+export async function generateMetadata() {
+  const data = await getHomepage();
+  const seoData = data.data.seo;
+  return {
+    title: seoData.metaTitle,
+    description: seoData.metaDescription,
+    robots: {
+      index: true,
+    },
+  };
 }
 
 export default async function Home() {

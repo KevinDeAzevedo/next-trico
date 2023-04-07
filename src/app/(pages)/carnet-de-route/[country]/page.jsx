@@ -55,11 +55,23 @@ function culturespot(param) {
   return totalCultureSpot.toLocaleString('fr');
 }
 
+// SEO ZONE
+export async function generateMetadata({ params }) {
+  const data = await getCountry(params);
+  const seoData = data.data.attributes.seo;
+  return {
+    title: seoData.metaTitle,
+    description: seoData.metaDescription,
+    robots: {
+      index: true,
+    },
+  };
+}
+
 export default async function Country({ params }) {
   const data = await getCountry(params);
   const country = data.data.attributes;
   const locations = country.locations.data;
-
   return (
     <main>
       <HeroBanner

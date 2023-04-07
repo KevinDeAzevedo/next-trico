@@ -23,7 +23,10 @@ async function getNews() {
 }
 
 async function getPage() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/newspage`, options);
+  const res = await fetch(
+    `${process.env.STRAPI_URL}/api/newspage?populate=*`,
+    options
+  );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
@@ -37,6 +40,19 @@ function processImage(contentParam) {
     '/uploads',
     `${process.env.STRAPI_URL}/uploads`
   );
+}
+
+// SEO ZONE
+export async function generateMetadata() {
+  const data = await getPage();
+  const seoData = data.data.seo;
+  return {
+    title: seoData.metaTitle,
+    description: seoData.metaDescription,
+    robots: {
+      index: true,
+    },
+  };
 }
 
 export default async function News() {

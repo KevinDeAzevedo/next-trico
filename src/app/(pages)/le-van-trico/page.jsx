@@ -34,6 +34,19 @@ async function getTrico() {
   return res.json();
 }
 
+// SEO ZONE
+export async function generateMetadata() {
+  const data = await getTrico();
+  const seoData = data.data.seo;
+  return {
+    title: seoData.metaTitle,
+    description: seoData.metaDescription,
+    robots: {
+      index: true,
+    },
+  };
+}
+
 export default async function Trico() {
   const data = await getArticles();
   const articles = data.data;
@@ -54,7 +67,6 @@ export default async function Trico() {
         <BotButton link="#list" ui="-tiny" />
       </div>
       <section id="list">
-        {' '}
         <ul className="list">
           {articles.map((item, index) => (
             <li key={item.id} className="list-post">

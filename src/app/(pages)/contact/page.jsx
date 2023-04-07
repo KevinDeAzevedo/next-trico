@@ -19,6 +19,19 @@ async function getContact() {
   return res.json();
 }
 
+// SEO ZONE
+export async function generateMetadata() {
+  const data = await getContact();
+  const seoData = data.data.seo;
+  return {
+    title: seoData.metaTitle,
+    description: seoData.metaDescription,
+    robots: {
+      index: true,
+    },
+  };
+}
+
 export default async function Contact() {
   const data = await getContact();
   const contact = data.data;

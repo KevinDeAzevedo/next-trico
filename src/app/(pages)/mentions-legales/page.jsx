@@ -8,7 +8,10 @@ const options = {
 };
 
 async function getLegal() {
-  const res = await fetch(`${process.env.STRAPI_URL}/api/legal`, options);
+  const res = await fetch(
+    `${process.env.STRAPI_URL}/api/legal?populate=*`,
+    options
+  );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
@@ -22,6 +25,19 @@ function processImage(contentParam) {
     '/uploads',
     `${process.env.STRAPI_URL}/uploads`
   );
+}
+
+// SEO ZONE
+export async function generateMetadata() {
+  const data = await getLegal();
+  const seoData = data.data.seo;
+  return {
+    title: seoData.metaTitle,
+    description: seoData.metaDescription,
+    robots: {
+      index: true,
+    },
+  };
 }
 
 export default async function Legal() {
