@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Form from '../../components/Form';
 
 const options = {
