@@ -5,15 +5,28 @@ export default async function sitemap() {
     },
     cache: 'no-store',
   };
+  const countries = await fetch('http://localhost:1337/api/countries', options);
   const locations = await fetch(
     'http://localhost:1337/api/locations?populate=country',
     options
   );
-  const locationsData = await locations.json();
+  const articles = await fetch('http://localhost:1337/api/articles', options);
 
+  const countriesData = await countries.json();
+  const locationsData = await locations.json();
+  const articlesData = await articles.json();
+
+  const countriesPath = countriesData.data.map((country) => ({
+    url: `${process.env.SITE_URL}/carnet-de-route/${country.slug}`,
+    lastModified: country.publishedAt,
+  }));
   const locationsPath = locationsData.data.map((location) => ({
     url: `${process.env.SITE_URL}/carnet-de-route/${location.country.data.slug}/${location.slug}`,
     lastModified: location.publishedAt,
+  }));
+  const articlesPath = articlesData.data.map((article) => ({
+    url: `${process.env.SITE_URL}/le-van-trico/${article.slug}`,
+    lastModified: article.publishedAt,
   }));
   const routes = [
     '',
@@ -27,5 +40,5 @@ export default async function sitemap() {
     lastModified: new Date().toISOString(),
   }));
 
-  return [...routes, ...locationsPath];
+  return [...routes, ...countriesPath, ...locationsPath, ...articlesPath];
 }
