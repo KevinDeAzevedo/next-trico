@@ -1,5 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Arrow from '@/app/assets/Arrow-right.svg';
 
 export default function Form({ StrapiUrl, StrapiToken }) {
   const [newName, setNewName] = useState('');
@@ -97,7 +99,13 @@ export default function Form({ StrapiUrl, StrapiToken }) {
           value={newMessage}
           onChange={(e) => setNewMessage(e.currentTarget.value)}
         ></textarea>
-        <button type="submit">Envoyer</button>
+        <div className="submit-area">
+          <button type="submit" className="submit-button">
+            Envoyer
+            <Image className="submit-button-arrow" src={Arrow} alt=">" />
+          </button>
+        </div>
+
         <div className="status-form">
           <p>{status}</p>
         </div>
