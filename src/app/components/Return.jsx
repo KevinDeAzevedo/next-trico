@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import Path from '@/app/assets/Path-white.svg';
+import Path from '../assets/Path-white.svg';
 import Button from './Button';
 
 export default function Return({ title, link }) {

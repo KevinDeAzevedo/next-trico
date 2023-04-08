@@ -1,4 +1,4 @@
-import Return from '@/app/components/Return';
+import Return from '../../../../components/Return';
 
 export default function NotFound() {
   return (

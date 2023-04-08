@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import Image from 'next/image';
-import BotButton from '@/app/components/BotButton';
-import LocationIcn from '@/app/assets/Location-icon.svg';
+import BotButton from '../components/BotButton';
+import LocationIcn from '../assets/Location-icon.svg';
 import When from './When';
 
 export default function HeroBanner({

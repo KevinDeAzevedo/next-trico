@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Arrow from '@/app/assets/Arrow-right.svg';
+import Arrow from '../assets/Arrow-right.svg';
 
 export default function Form({ StrapiUrl, StrapiToken }) {
   const [newName, setNewName] = useState('');

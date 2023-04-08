@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import Image from 'next/image';
-import BotButton from '@/app/components/BotButton';
+import BotButton from '../../components/BotButton';
 import lefttruck from '../../assets/Left-truck.webp';
 import righttruck from '../../assets/Right-truck.webp';
 import biggribouille from '../../assets/Big-gribouille.webp';
-import Button from '@/app/components/Button';
+import Button from '../../components/Button';
 
 const options = {
   headers: {

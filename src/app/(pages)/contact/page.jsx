@@ -1,4 +1,4 @@
-import Form from '@/app/components/Form';
+import Form from '../../components/Form';
 
 const options = {
   headers: {

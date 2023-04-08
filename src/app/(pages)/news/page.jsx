@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import When from '../../components/When';
-import BotButton from '@/app/components/BotButton';
+import BotButton from '../../components/BotButton';
 
 const options = {
   headers: {

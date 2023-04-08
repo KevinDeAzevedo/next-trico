@@ -3,7 +3,6 @@ import BotButton from './components/BotButton';
 import PostCard from './components/PostCard';
 import Status from './components/Status';
 import Button from './components/Button';
-import { object } from 'prop-types';
 
 const options = {
   headers: {

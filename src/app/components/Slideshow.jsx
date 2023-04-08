@@ -2,8 +2,8 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import SlideLeft from '@/app/assets/Slide-left.svg';
-import SlideRight from '@/app/assets/Slide-right.svg';
+import SlideLeft from '../assets/Slide-left.svg';
+import SlideRight from '../assets/Slide-right.svg';
 
 export default function Slideshow({ picture }) {
   const [index, setIndex] = useState(0);

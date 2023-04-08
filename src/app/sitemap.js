@@ -12,11 +12,18 @@ export default async function sitemap() {
   const locationsData = await locations.json();
 
   const locationsPath = locationsData.data.map((location) => ({
-    url: `https://acme.com/${location.country.data.slug}/${location.slug}`,
+    url: `${process.env.SITE_URL}/carnet-de-route/${location.country.data.slug}/${location.slug}`,
     lastModified: location.publishedAt,
   }));
-  const routes = ['', '/about', '/blog'].map((route) => ({
-    url: `https://acme.com${route}`,
+  const routes = [
+    '',
+    'carnet-de-route',
+    'le-van-trico',
+    'news',
+    'mentions-legales',
+    'contact',
+  ].map((route) => ({
+    url: `${process.env.SITE_URL}/${route}`,
     lastModified: new Date().toISOString(),
   }));
 

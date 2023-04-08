@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import PostCard from '@/app/components/PostCard';
-import Status from '@/app/components/Status';
-import BotButton from '@/app/components/BotButton';
+import PostCard from '../../components/PostCard';
+import Status from '../../components/Status';
+import BotButton from '../../components/BotButton';
 
 const options = {
   headers: {

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import Arrow from '@/app/assets/Arrow-right.svg';
+import Arrow from '../assets/Arrow-right.svg';
 
 export default function Button({ name, link }) {
   return (

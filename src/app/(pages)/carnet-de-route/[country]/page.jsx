@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import HeroBanner from '@/app/components/HeroBanner';
-import PostCard from '@/app/components/PostCard';
-import Return from '@/app/components/Return';
+import HeroBanner from '../../../components/HeroBanner';
+import PostCard from '../../../components/PostCard';
+import Return from '../../../components/Return';
 
 const options = {
   headers: {

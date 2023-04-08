@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import HeroBanner from '@/app/components/HeroBanner';
-import Return from '@/app/components/Return';
-import Slideshow from '@/app/components/Slideshow';
+import HeroBanner from '../../../components/HeroBanner';
+import Return from '../../../components/Return';
+import Slideshow from '../../../components/Slideshow';
 
 const options = {
   headers: {
