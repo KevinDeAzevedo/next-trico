@@ -2,6 +2,7 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import When from '../../components/When';
 import BotButton from '../../components/BotButton';
+import Comment from '../../components/Comment';
 
 const options = {
   headers: {
@@ -90,6 +91,7 @@ export default async function News() {
             .reverse()}
         </ul>
       </section>
+      <Comment />
     </main>
   );
 }
