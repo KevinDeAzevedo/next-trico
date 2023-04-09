@@ -4,6 +4,8 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import HeroBanner from '../../../components/HeroBanner';
 import Return from '../../../components/Return';
 import Slideshow from '../../../components/Slideshow';
+import Comment from '../../../components/Comment';
+import { get } from 'http';
 
 const options = {
   headers: {
@@ -30,6 +32,19 @@ async function getArticle(params) {
     notFound();
   }
   return res.json();
+}
+
+// SEO ZONE
+export async function generateMetadata({ params }) {
+  const data = await getArticle(params);
+  const seoData = data.data.attributes.seo;
+  return {
+    title: seoData.metaTitle,
+    description: seoData.metaDescription,
+    robots: {
+      index: true,
+    },
+  };
 }
 
 export default async function Article({ params }) {
@@ -62,6 +77,11 @@ export default async function Article({ params }) {
       <section className="article-content">
         <MDXRemote source={processImage(article.content)} />
         <Slideshow picture={arrayOfPictures} />
+        <Comment
+          url={`${process.env.SITE_URL}/le-van-trico/${article.slug}`}
+          id={article.id}
+          title={article.title}
+        />
       </section>
       <Return title="Le van Trico" link="/le-van-trico" />
     </main>

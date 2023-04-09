@@ -4,6 +4,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import HeroBanner from '../../../../components/HeroBanner';
 import Return from '../../../../components/Return';
 import Slideshow from '../../../../components/Slideshow';
+import Comment from '../../../../components/Comment';
 
 const options = {
   headers: {
@@ -125,6 +126,11 @@ export default async function Country({ params }) {
         </ul>
         <MDXRemote source={processImage(location.content)} />
         <Slideshow picture={arrayOfPictures} />
+        <Comment
+          url={`${process.env.SITE_URL}/carnet-de-route/${country.slug}/${location.slug}`}
+          id={location.id}
+          title={location.title}
+        />
       </section>
       <Return title={country.name} link={`/carnet-de-route/${country.slug}`} />
     </main>

@@ -90,8 +90,12 @@ export default async function News() {
             ))
             .reverse()}
         </ul>
+        <Comment
+          url={`${process.env.SITE_URL}/News`}
+          id="Breaking-news"
+          title="Breaking News"
+        />
       </section>
-      <Comment />
     </main>
   );
 }
