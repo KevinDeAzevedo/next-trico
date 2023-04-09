@@ -5,7 +5,6 @@ import HeroBanner from '../../../components/HeroBanner';
 import Return from '../../../components/Return';
 import Slideshow from '../../../components/Slideshow';
 import Comment from '../../../components/Comment';
-import { get } from 'http';
 
 const options = {
   headers: {
