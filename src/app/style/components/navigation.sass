@@ -6,12 +6,27 @@
   width: 100%
   margin: 0 auto
   padding: 40px 30px
+  border: 1px solid blue
   // max-width: 1300px
-  @media screen and (max-width: map-get($breakpoints, mobile))
-    display: none
+  @media screen and (max-width: map-get($breakpoints, tablet))
+    flex-wrap: wrap
   .logo
     width: 90px
     height: auto
+  .burger
+    &-menu
+      display: flex
+      border: 1px solid red
+      @media screen and (max-width: map-get($breakpoints, tablet))
+        display: none
+        &.open
+          display: flex
+    &-button
+      border: 1px solid green
+      display: none
+      margin: 0
+      @media screen and (max-width: map-get($breakpoints, tablet))
+        display: flex
   .social
     &:hover
       &::before
