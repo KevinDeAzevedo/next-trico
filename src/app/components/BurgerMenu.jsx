@@ -19,20 +19,21 @@ export default function BurgerMenu({ countries }) {
       <nav className={isOpen ? 'burger-menu open' : 'burger-menu'}>
         <ul>
           <li>
-            <Link href="/" className="link-page">
+            <Link href="/" className="link-page" onClick={menuClick}>
               Accueil
             </Link>
           </li>
           <li className="link-dropdown">
             Carnet de route <Image src={arrowDropdown} width={13} alt="" />
             <ul>
-              <Link href="/carnet-de-route">
+              <Link href="/carnet-de-route" onClick={menuClick}>
                 <li>Tout</li>
               </Link>
               {countries.map((country) => (
                 <Link
                   key={country.id}
                   href={`/carnet-de-route/${country.slug}`}
+                  onClick={menuClick}
                 >
                   <li>{country.name}</li>
                 </Link>
@@ -40,12 +41,16 @@ export default function BurgerMenu({ countries }) {
             </ul>
           </li>
           <li>
-            <Link href="/le-van-trico" className="link-page">
+            <Link
+              href="/le-van-trico"
+              className="link-page"
+              onClick={menuClick}
+            >
               Le van Trico
             </Link>
           </li>
           <li>
-            <Link href="/contact" className="link-page">
+            <Link href="/contact" className="link-page" onClick={menuClick}>
               Nous écrire
             </Link>
           </li>
