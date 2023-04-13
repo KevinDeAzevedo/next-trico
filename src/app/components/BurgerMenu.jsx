@@ -5,6 +5,8 @@ import Image from 'next/image';
 import instagram from '../assets/Instagram.svg';
 import tiktok from '../assets/Tiktok.svg';
 import arrowDropdown from '../assets/Arrow-dropdown.svg';
+import dotsMenu from '../assets/dots-menu.svg';
+import closeMenu from '../assets/close-menu.svg';
 
 export default function BurgerMenu({ countries }) {
   let [isOpen, setIsOpen] = useState(false);
@@ -14,7 +16,11 @@ export default function BurgerMenu({ countries }) {
   return (
     <>
       <button className="burger-button" onClick={menuClick}>
-        {isOpen ? 'Close' : 'Menu'}
+        {isOpen ? (
+          <Image src={closeMenu} alt="close" />
+        ) : (
+          <Image src={dotsMenu} alt="menu" />
+        )}
       </button>
       <nav className={isOpen ? 'burger-menu open' : 'burger-menu'}>
         <ul>
