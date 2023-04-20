@@ -1,6 +1,7 @@
 import Marquee from './components/Marquee';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import Gtag from './components/Gtag';
 
 import './style/main.sass';
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
         <Navigation />
         {children}
         <Footer />
+        <Gtag />
       </body>
     </html>
   );
