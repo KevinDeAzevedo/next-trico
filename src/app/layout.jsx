@@ -2,7 +2,7 @@ import Marquee from './components/Marquee';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Gtag from './components/Gtag';
-
+import Cookies from './components/Cookies';
 import './style/main.sass';
 
 export const metadata = {
@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <Gtag />
+        <Cookies />
       </body>
     </html>
   );
