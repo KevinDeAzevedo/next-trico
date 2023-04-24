@@ -8,7 +8,7 @@ import './style/main.sass';
 export const metadata = {
   title: '',
   description: '',
-  metadataBase: new URL('https://www.trico-ontheroad.com'),
+  metadataBase: new URL(process.env.SITE_URL),
 };
 
 export default function RootLayout({ children }) {
