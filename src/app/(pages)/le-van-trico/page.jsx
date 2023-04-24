@@ -74,7 +74,7 @@ export default async function Trico() {
                 title={item.title}
                 link={`/le-van-trico/${item.slug}`}
                 intro={item.intro}
-                cover={item.cover.data.url}
+                cover={item.cover.data.formats.medium.url}
               />
             </li>
           ))}

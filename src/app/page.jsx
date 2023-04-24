@@ -128,7 +128,7 @@ export default async function Home() {
                   title={article.title}
                   link={`/le-van-trico/${article.slug}`}
                   intro={article.intro}
-                  cover={article.cover.data.url}
+                  cover={article.cover.data.formats.medium.url}
                 />
               </li>
             ))}

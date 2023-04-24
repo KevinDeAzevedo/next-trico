@@ -75,7 +75,7 @@ export default async function Carnet() {
                 </div>
                 <div className="country-image">
                   <img
-                    src={`${process.env.STRAPI_URL}${country.cover.data.url}`}
+                    src={`${process.env.STRAPI_URL}${country.cover.data.formats.medium.url}`}
                     alt="Cover du pays"
                   />
                 </div>

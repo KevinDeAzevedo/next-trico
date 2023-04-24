@@ -78,7 +78,7 @@ export default async function News() {
                 <div className="news-card-content">
                   <div className="news-card-content-image">
                     <img
-                      src={`${process.env.STRAPI_URL}${post.cover.data.url}`}
+                      src={`${process.env.STRAPI_URL}${post.cover.data.formats.medium.url}`}
                       alt="Couverture de la news"
                     />
                   </div>

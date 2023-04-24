@@ -122,7 +122,9 @@ export default async function Country({ params }) {
                   title={item.attributes.title}
                   link={`/carnet-de-route/${country.slug}/${item.attributes.slug}`}
                   intro={item.attributes.intro}
-                  cover={item.attributes.cover.data.attributes.url}
+                  cover={
+                    item.attributes.cover.data.attributes.formats.medium.url
+                  }
                 />
               </li>
             ))

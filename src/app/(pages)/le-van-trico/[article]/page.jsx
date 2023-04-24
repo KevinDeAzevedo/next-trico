@@ -54,7 +54,7 @@ export default async function Article({ params }) {
   if (picturesSlideshow != null) {
     for (let picture of picturesSlideshow) {
       arrayOfPictures.push(
-        `${process.env.STRAPI_URL}${picture.attributes.url}`
+        `${process.env.STRAPI_URL}${picture.attributes.formats.medium.url}`
       );
     }
   }
@@ -70,7 +70,7 @@ export default async function Article({ params }) {
           </div>
         }
         title={article.title}
-        cover={article.cover.data.attributes.url}
+        cover={article.cover.data.attributes.formats.large.url}
         date={article.date}
       />
       <section className="article-content">
