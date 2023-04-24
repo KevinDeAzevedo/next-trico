@@ -12,7 +12,7 @@ export default function NotFound() {
         <span>404</span>La page demandée est introuvable 😢
       </h1>
       <a href="/" onClick={handleClick}>
-        Retour à l'Accueil
+        Retour à l&apos;Accueil
       </a>
     </main>
   );
