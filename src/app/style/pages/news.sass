@@ -39,6 +39,25 @@
       height: 100%
     &-text
       width: 60%
+      h2, h2, h3, h4, h5, h6
+        text-transform: uppercase
+      h2
+        font-size: 2em
+      p
+        margin: 2% 0 2% 0
+      a
+        display: inline-block
+        text-decoration: underline
+        text-decoration-color: $secondary-color
+        text-decoration-thickness: 3px
+        text-underline-offset: 6px
+        &:hover
+          background-color: $secondary-color
+      li
+        font-weight: 100
+        font-size: 1.3em
+        line-height: 1.5em
+        list-style: inside
       @media screen and (max-width: map-get($breakpoints, mobile))
         width: 100%
         margin-top: 5%
