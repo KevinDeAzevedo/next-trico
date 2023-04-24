@@ -114,17 +114,19 @@ export default async function Country({ params }) {
       </div>
       <section id="list">
         <ul className="list">
-          {locations.map((item, index) => (
-            <li key={item.id} className="list-post">
-              <PostCard
-                date={item.attributes.date}
-                title={item.attributes.title}
-                link={`/carnet-de-route/${country.slug}/${item.attributes.slug}`}
-                intro={item.attributes.intro}
-                cover={item.attributes.cover.data.attributes.url}
-              />
-            </li>
-          ))}
+          {locations
+            .map((item, index) => (
+              <li key={item.id} className="list-post">
+                <PostCard
+                  date={item.attributes.date}
+                  title={item.attributes.title}
+                  link={`/carnet-de-route/${country.slug}/${item.attributes.slug}`}
+                  intro={item.attributes.intro}
+                  cover={item.attributes.cover.data.attributes.url}
+                />
+              </li>
+            ))
+            .reverse()}
         </ul>
       </section>
       <Return title="Autres routes" link="/carnet-de-route" />
