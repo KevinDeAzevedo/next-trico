@@ -9,6 +9,19 @@ export const metadata = {
   title: '',
   description: '',
   metadataBase: new URL(process.env.SITE_URL),
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  },
+  openGraph: {
+    images: [
+      {
+        url: `${process.env.SITE_URL}/opengraph-image.jpg`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }) {
