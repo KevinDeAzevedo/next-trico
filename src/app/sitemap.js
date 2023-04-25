@@ -5,12 +5,18 @@ export default async function sitemap() {
     },
     cache: 'no-store',
   };
-  const countries = await fetch('http://localhost:1337/api/countries', options);
-  const locations = await fetch(
-    'http://localhost:1337/api/locations?populate=country',
+  const countries = await fetch(
+    `${process.env.STRAPI_URL}/api/countries`,
     options
   );
-  const articles = await fetch('http://localhost:1337/api/articles', options);
+  const locations = await fetch(
+    `${process.env.STRAPI_URL}/api/locations?populate=country`,
+    options
+  );
+  const articles = await fetch(
+    `${process.env.STRAPI_URL}/api/articles`,
+    options
+  );
 
   const countriesData = await countries.json();
   const locationsData = await locations.json();
