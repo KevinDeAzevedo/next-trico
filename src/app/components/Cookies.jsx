@@ -5,7 +5,7 @@ import Script from 'next/script';
 export default function Cookies() {
   return (
     <>
-      <Script
+      {/* <Script
         onLoad={() => {
           window.axeptioSettings = {
             clientId: '6443b0ec28b9560a6a1a96d5',
@@ -19,7 +19,7 @@ export default function Cookies() {
             t.parentNode.insertBefore(e, t);
           })(document, 'script');
         }}
-      />
+      /> */}
     </>
   );
 }
