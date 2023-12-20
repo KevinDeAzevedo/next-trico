@@ -25,28 +25,28 @@ export default async function Marquee() {
     <div className="marquee">
       <div className="marquee-group">
         <p>
-          <Link href="/news">
-            <span>
+          {lastNews.map((item, index) => (
+            <Link
+              key={item.id}
+              href={`/news/${item.id}`}
+              className="marquee-group-title"
+            >
               <strong>// Breaking News : </strong>
-            </span>
-            {lastNews.map((item, index) => (
-              <span key={item.id} className="marquee-group-title">
-                {item.title}
-              </span>
-            ))}
-          </Link>
+              {item.title}
+            </Link>
+          ))}
         </p>
         <p aria-hidden="true">
-          <Link href="/news">
-            <span>
+          {lastNews.map((item, index) => (
+            <Link
+              key={item.id}
+              href={`/news/${item.id}`}
+              className="marquee-group-title"
+            >
               <strong>// Breaking News : </strong>
-            </span>
-            {lastNews.map((item, index) => (
-              <span key={item.id} className="marquee-group-title">
-                {item.title}{' '}
-              </span>
-            ))}
-          </Link>
+              {item.title}
+            </Link>
+          ))}
         </p>
       </div>
     </div>

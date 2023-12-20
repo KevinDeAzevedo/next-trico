@@ -61,3 +61,31 @@
       @media screen and (max-width: map-get($breakpoints, mobile))
         width: 100%
         margin-top: 5%
+
+.news-article
+  display: flex
+  flex-direction: row
+  margin-bottom: 5rem
+  gap: 3rem
+  @media screen and (max-width: map-get($breakpoints, tablet))
+    flex-direction: column
+  &-content
+    width: 100%
+    &-backbtn
+      margin-bottom: 1rem
+      text-decoration: underline
+  &-image
+    position: relative
+    margin: auto
+    width: 100%
+    min-height: 990px
+    @media screen and (max-width: map-get($breakpoints, tablet))
+      width: 80%
+    @media screen and (max-width: map-get($breakpoints, mobile))
+      width: 100%
+    img
+      position: absolute
+      object-fit: cover
+      width: 100%
+      height: 100%
+      border-radius: 30px

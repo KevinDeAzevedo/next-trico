@@ -3,6 +3,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import When from '../../components/When';
 import BotButton from '../../components/BotButton';
 import Comment from '../../components/Comment';
+import Link from 'next/link';
 
 const options = {
   headers: {
@@ -67,29 +68,27 @@ export default async function News() {
         <BotButton link="#list" ui="-tiny" />
       </div>
       <section id="list" className="news-list">
-        <ul>
-          {news
-            .map((post, index) => (
-              <li key={post.id} className="news-card">
-                <div className="news-card-title">
-                  <When date={post.date} />
-                  <h2>{post.title}</h2>
+        {news
+          .map((post, index) => (
+            <Link key={post.id} href={`/news/${post.id}`} className="news-card">
+              <div className="news-card-title">
+                <When date={post.date} />
+                <h2>{post.title}</h2>
+              </div>
+              <div className="news-card-content">
+                <div className="news-card-content-image">
+                  <img
+                    src={`${process.env.STRAPI_URL}${post.cover.data.formats.medium.url}`}
+                    alt="Couverture de la news"
+                  />
                 </div>
-                <div className="news-card-content">
-                  <div className="news-card-content-image">
-                    <img
-                      src={`${process.env.STRAPI_URL}${post.cover.data.formats.medium.url}`}
-                      alt="Couverture de la news"
-                    />
-                  </div>
-                  <div className="news-card-content-text">
-                    <MDXRemote source={processImage(post.content)} />
-                  </div>
+                <div className="news-card-content-text">
+                  <MDXRemote source={processImage(post.content)} />
                 </div>
-              </li>
-            ))
-            .reverse()}
-        </ul>
+              </div>
+            </Link>
+          ))
+          .reverse()}
         <Comment
           url={`${process.env.SITE_URL}/News`}
           id="Breaking-news"
