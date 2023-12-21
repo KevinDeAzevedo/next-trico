@@ -60,7 +60,7 @@ export default async function sitemap() {
   }));
   const pagesNewsPath = arrayOfPageNews.map((page, index) => ({
     url: `${process.env.SITE_URL}/news?page=${index + 1}`,
-    // lastModified: news.publishedAt,
+    lastModified: new Date().toISOString(),
   }));
 
   return [
