@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { MDXRemote } from 'next-mdx-remote/rsc';
 import When from '../../components/When';
 import BotButton from '../../components/BotButton';
 import Comment from '../../components/Comment';
@@ -73,25 +72,38 @@ export default async function News({ searchParams }) {
   const paginationData = data.meta.pagination; // get number of page(s)
   const news = data.data;
   const page = await getPage();
+
   return (
     <main>
       <div className="hero-news">
         <h1>{page.data.title}</h1>
         <BotButton link="#list" ui="-tiny" />
       </div>
-      <section id="list" className="news-list">
-        {news.map((post, index) => (
-          <Link key={post.id} href={`/news/${post.id}`}>
-            {post.title}
-          </Link>
-        ))}
-        <Pagination paginationData={paginationData} />
-        <Comment
-          url={`${process.env.SITE_URL}/News`}
-          id="Breaking-news"
-          title="Breaking News"
-        />
-      </section>
+      {news.length != 0 ? (
+        <section id="list" className="news-list">
+          {news.map((post, index) => (
+            <Link key={post.id} className="news-card" href={`/news/${post.id}`}>
+              <div className="news-card-content">
+                <h2>{post.title}</h2>
+                <When date={post.date} />
+              </div>
+              <img
+                src={`${process.env.STRAPI_URL}${post.cover.data.formats.medium.url}`}
+                alt="Couverture de la news"
+              />
+            </Link>
+          ))}
+        </section>
+      ) : (
+        redirect('/news?page=1')
+      )}
+
+      <Pagination paginationData={paginationData} />
+      <Comment
+        url={`${process.env.SITE_URL}/News`}
+        id="Breaking-news"
+        title="Breaking News"
+      />
     </main>
   );
 }
