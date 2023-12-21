@@ -18,10 +18,7 @@ export default async function sitemap() {
     options
   );
   // know total of news
-  const news = await fetch(
-    `${process.env.STRAPI_URL}/api/news?pagination[start]=0&pagination[limit]=1`,
-    options
-  );
+  const news = await fetch(`${process.env.STRAPI_URL}/api/news`, options);
   const newsData = await news.json();
   // fetch with total of news
   const breakingNews = await fetch(
@@ -33,6 +30,7 @@ export default async function sitemap() {
   const locationsData = await locations.json();
   const articlesData = await articles.json();
   const breakingNewsData = await breakingNews.json();
+  const arrayOfPageNews = Array(newsData.meta.pagination.pageCount).fill('');
 
   const countriesPath = countriesData.data.map((country) => ({
     url: `${process.env.SITE_URL}/carnet-de-route/${country.slug}`,
@@ -50,7 +48,6 @@ export default async function sitemap() {
     '',
     'carnet-de-route',
     'le-van-trico',
-    'news',
     'mentions-legales',
     'contact',
   ].map((route) => ({
@@ -61,12 +58,17 @@ export default async function sitemap() {
     url: `${process.env.SITE_URL}/news/${news.id}`,
     lastModified: news.publishedAt,
   }));
+  const pagesNewsPath = arrayOfPageNews.map((page, index) => ({
+    url: `${process.env.SITE_URL}/news?page=${index + 1}`,
+    // lastModified: news.publishedAt,
+  }));
 
   return [
     ...routes,
     ...countriesPath,
     ...locationsPath,
     ...articlesPath,
+    ...pagesNewsPath,
     ...breakingNewsPath,
   ];
 }
