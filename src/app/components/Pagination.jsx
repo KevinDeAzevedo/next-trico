@@ -1,8 +1,6 @@
 'use client';
 
-// import '../style/components/pagination.sass';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Image from 'next/image';
 
 export default function Pagination({ paginationData }) {
   const router = useRouter();
@@ -24,14 +22,7 @@ export default function Pagination({ paginationData }) {
               : () => router.push(`/news?page=${selectedPage - 1}`)
           }
         >
-          {/* <Image
-            className="arrowPage arrowPage-flip"
-            src={ArrowPage}
-            alt="Précédent"
-            width={30}
-            height={30}
-          /> */}
-          précédent
+          préc.
         </li>
         {/* LAST PAGE NUMBER */}
         {selectedPage != 1 ? (
@@ -80,14 +71,7 @@ export default function Pagination({ paginationData }) {
               : () => router.push(`/news?page=${selectedPage + 1}`)
           }
         >
-          {/* <Image
-            className="arrowPage"
-            src={ArrowPage}
-            alt="Suivant"
-            width={30}
-            height={30}
-          /> */}
-          Suivant
+          suiv.
         </li>
       </ul>
     </div>

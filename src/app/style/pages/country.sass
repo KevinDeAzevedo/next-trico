@@ -8,6 +8,7 @@
     padding: 30px
   @media screen and (max-width: map-get($breakpoints, mobile))
     flex-direction: column
+    padding: 10px
   &-content
     z-index: 2
     width: 100%
@@ -16,6 +17,8 @@
     margin-top: -70px
     @media screen and (max-width: map-get($breakpoints, tablet))
       padding: 50px 40px
+    @media screen and (max-width: map-get($breakpoints, mobile))
+      padding: 30px
     h2
       font-size: 0.8em
       text-transform: uppercase
@@ -24,6 +27,8 @@
     position: relative
     width: 100%
     padding: 10px
+    @media screen and (max-width: map-get($breakpoints, mobile))
+      padding: 0
     &-separator
       position: absolute
       display: flex
@@ -61,7 +66,7 @@
         text-align: center
         width: 50%
         @media screen and (max-width: 700px)
-          padding: 20px
+          padding: 20px 10px
         p
           font-size: 1.7em
           font-weight: 700

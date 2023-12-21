@@ -20,6 +20,8 @@
 .news-card
   position: relative
   min-height: 700px
+  @media screen and (max-width: map-get($breakpoints, tablet))
+    min-height: 500px
   &-content
     position: absolute
     width: 100%
@@ -64,6 +66,7 @@
     min-height: 990px
     @media screen and (max-width: map-get($breakpoints, tablet))
       width: 80%
+      min-height: 600px
     @media screen and (max-width: map-get($breakpoints, mobile))
       width: 100%
     img
