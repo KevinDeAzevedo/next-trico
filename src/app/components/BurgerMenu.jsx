@@ -29,6 +29,11 @@ export default function BurgerMenu({ countries }) {
               Accueil
             </Link>
           </li>
+          <li>
+            <Link href="/news" className="link-page" onClick={menuClick}>
+              Breaking News
+            </Link>
+          </li>
           <li className="link-dropdown">
             Carnet de route <Image src={arrowDropdown} width={13} alt="" />
             <ul>
