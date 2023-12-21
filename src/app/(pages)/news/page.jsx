@@ -3,7 +3,9 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import When from '../../components/When';
 import BotButton from '../../components/BotButton';
 import Comment from '../../components/Comment';
+import Pagination from '../../components/Pagination';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 const options = {
   headers: {
@@ -12,9 +14,9 @@ const options = {
   cache: 'no-store',
 };
 
-async function getNews() {
+async function getNews(nbPage) {
   const res = await fetch(
-    `${process.env.STRAPI_URL}/api/news?populate=*`,
+    `${process.env.STRAPI_URL}/api/news?pagination[page]=${nbPage}&sort=publishedAt:desc&&populate=*`,
     options
   );
   if (!res.ok) {
@@ -57,8 +59,18 @@ export async function generateMetadata() {
   };
 }
 
-export default async function News() {
-  const data = await getNews();
+export default async function News({ searchParams }) {
+  // Check if searchParams is Empty
+  if (
+    Object.keys(searchParams).length === 0 &&
+    searchParams.constructor === Object
+  ) {
+    redirect('/news?page=1'); // Force redirection when URL hits '/blog'
+  }
+
+  const numberPage = searchParams.page;
+  const data = await getNews(numberPage);
+  const paginationData = data.meta.pagination; // get number of page(s)
   const news = data.data;
   const page = await getPage();
   return (
@@ -68,27 +80,12 @@ export default async function News() {
         <BotButton link="#list" ui="-tiny" />
       </div>
       <section id="list" className="news-list">
-        {news
-          .map((post, index) => (
-            <Link key={post.id} href={`/news/${post.id}`} className="news-card">
-              <div className="news-card-title">
-                <When date={post.date} />
-                <h2>{post.title}</h2>
-              </div>
-              <div className="news-card-content">
-                <div className="news-card-content-image">
-                  <img
-                    src={`${process.env.STRAPI_URL}${post.cover.data.formats.medium.url}`}
-                    alt="Couverture de la news"
-                  />
-                </div>
-                <div className="news-card-content-text">
-                  <MDXRemote source={processImage(post.content)} />
-                </div>
-              </div>
-            </Link>
-          ))
-          .reverse()}
+        {news.map((post, index) => (
+          <Link key={post.id} href={`/news/${post.id}`}>
+            {post.title}
+          </Link>
+        ))}
+        <Pagination paginationData={paginationData} />
         <Comment
           url={`${process.env.SITE_URL}/News`}
           id="Breaking-news"
