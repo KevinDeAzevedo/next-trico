@@ -52,7 +52,7 @@ export default function Pagination({ paginationData }) {
             <li className="dots">...</li>
             <li
               className="num"
-              onClick={() => router.push(`/news?page=${selectedPage + 1}`)}
+              onClick={() => router.push(`/news?page=${arrayPages.length}`)}
             >
               {paginationData.pageCount}
             </li>
