@@ -85,27 +85,33 @@ export default async function Home() {
             <Button name="Carnet de route" link="/carnet-de-route" />
           </div>
           <div className="home-hero-image">
-            <img
-              src={`${process.env.STRAPI_URL}${page.firstCover.data.url}`}
-              alt=""
-            />
+            <video autoPlay muted loop>
+              <source
+                src={`${process.env.STRAPI_URL}${page.firstCover.data.url}`}
+                type="video/webm"
+              />
+            </video>
           </div>
         </div>
         <div className="home-hero-02">
           <div className="home-hero-image">
-            <img
-              src={`${process.env.STRAPI_URL}${page.secondCover.data.url}`}
-              alt=""
-            />
+            <video autoPlay muted loop>
+              <source
+                src={`${process.env.STRAPI_URL}${page.secondCover.data.url}`}
+                type="video/webm"
+              />
+            </video>
           </div>
           <p>{carnetIntro}</p>
         </div>
         <div className="home-hero-03">
           <div className="home-hero-image">
-            <img
-              src={`${process.env.STRAPI_URL}${page.thirdCover.data.url}`}
-              alt=""
-            />
+            <video autoPlay muted loop>
+              <source
+                src={`${process.env.STRAPI_URL}${page.thirdCover.data.url}`}
+                type="video/webm"
+              />
+            </video>
           </div>
           <div className="home-hero-03-button">
             <BotButton link="#fabrication-du-van-trico" ui="-big" />
