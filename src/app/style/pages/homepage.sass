@@ -1,65 +1,97 @@
+.debug
+  border: 1px solid red
+
 .home-hero
-  display: flex
-  flex-direction: row
-  justify-content: space-between
-  gap: 10%
-  @media screen and (max-width: map-get($breakpoints, mobile))
-    gap: 0
-    flex-wrap: wrap
-  &-01
-    display: flex
-    flex-direction: column
-    width: 297px
-    margin-top: 100px
-    @media screen and (max-width: map-get($breakpoints, mobile))
-      width: 100%
-      flex-direction: row
-      justify-content: space-between
-      margin-top: 10px
-    &-heading
-      width: 100%
-      margin-bottom: 80px
-      @media screen and (max-width: map-get($breakpoints, mobile))
-        width: 100%
-        padding-right: 5%
-  &-02
-    width: 297px
-    margin-top: 100px
-    @media screen and (max-width: map-get($breakpoints, mobile))
-      width: 50%
-      margin-top: 0
-      padding-right: 2%
+  &-content
+    text-align: center
+    &-name
+      font-size: 1em
+      font-weight: bold
+      text-transform: uppercase
+    h1
+      font-size: 4em
+      @media screen and (max-width: map-get($breakpoints, tablet))
+        font-size: 3em
     p
-      margin-top: 50px
-  &-03
-    width: 297px
-    @media screen and (max-width: map-get($breakpoints, mobile))
-      width: 50%
-      margin-top: 100px
-      padding-left: 2%
-    &-button
-      display: flex
-      justify-content: flex-end
-      margin-top: 50%
-  &-image
-    position: relative
+      max-width: 60%
+      margin: auto
+      @media screen and (max-width: map-get($breakpoints, tablet))
+        max-width: 100%
+    a
+      margin-top: 2em
+      margin-bottom: 0
+  &-videos
     width: 100%
-    min-height: 532px
-    border-radius: 30px
-    overflow: hidden
-    @media screen and (max-width: map-get($breakpoints, mobile))
-      width: 100%
-      min-height: 350px
-    img
+    margin: auto
+    position: relative
+    min-height: 500px
+    &-card
       position: absolute
-      object-fit: cover
-      width: 100%
-      height: 100%
-    video
-      position: absolute
-      object-fit: cover
-      width: 100%
-      height: 100%
+      left: 50%
+      transform: translateX(-50%)
+      width: 200px
+      height: 350px
+      border-radius: 30px
+      overflow: hidden
+      box-shadow: 22px 27px 36px 0 rgba(0,0,0,0.19)
+      video
+        position: absolute
+        object-fit: cover
+        width: 100%
+        height: 100%
+    @media screen and (max-width: map-get($breakpoints, tablet))
+      pointer-events: none
+    &:hover
+      #video01
+        rotate: -18deg
+        transform: translate(-310px, -50px)
+      #video02
+        rotate: 4deg
+        transform: translate(-110px, 50px)
+      #video03
+        rotate: 18deg
+        transform: translate(110px, 60px)
+
+#video01
+  rotate: -15deg
+  transform: translate(-300px, 0)
+  transition: ease-in-out 0.5s
+
+#video02
+  rotate: 2deg
+  transform: translate(-100px, 100px)
+  transition: ease-in-out 0.5s
+
+#video03
+  rotate: 13deg
+  transform: translate(100px, 53px)
+  transition: ease-in-out 0.5s
+
+.bot-button
+  width: 100%
+  display: flex
+  justify-content: center
+  margin-top: 2em
+
+  // &-image
+  //   position: relative
+  //   width: 100%
+  //   min-height: 532px
+  //   border-radius: 30px
+  //   overflow: hidden
+  //   @media screen and (max-width: map-get($breakpoints, mobile))
+  //     width: 100%
+  //     min-height: 350px
+  //   img
+  //     position: absolute
+  //     object-fit: cover
+  //     width: 100%
+  //     height: 100%
+  //   video
+  //     position: absolute
+  //     object-fit: cover
+  //     width: 100%
+  //     height: 100%
 
 .secondpart
   display: flex

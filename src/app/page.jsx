@@ -79,37 +79,36 @@ export default async function Home() {
   return (
     <main>
       <section className="home-hero">
-        <div className="home-hero-01">
-          <div className="home-hero-01-heading">
-            <h1>{page.firstTitle}</h1>
-            <Button name="Carnet de route" link="/carnet-de-route" />
-          </div>
-          <div className="home-hero-image">
+        <div className="home-hero-content">
+          <p className="home-hero-content-name">Trico on the Road</p>
+          <h1>{page.firstTitle}</h1>
+          <Button name="Carnet de route" link="/carnet-de-route" />
+        </div>
+        <div className="home-hero-videos">
+          <div className="home-hero-videos-card" id="video01">
             <video autoPlay muted loop playsInline>
               <source src="/videos/mp4/motion01.mp4" type="video/mp4" />
               <source src="/videos/webm/motion01.webm" type="video/webm" />
             </video>
           </div>
-        </div>
-        <div className="home-hero-02">
-          <div className="home-hero-image">
+          <div className="home-hero-videos-card" id="video02">
             <video autoPlay muted loop playsInline>
               <source src="/videos/mp4/motion02.mp4" type="video/mp4" />
               <source src="/videos/webm/motion02.webm" type="video/webm" />
             </video>
           </div>
-          <p>{carnetIntro}</p>
-        </div>
-        <div className="home-hero-03">
-          <div className="home-hero-image">
+          <div className="home-hero-videos-card" id="video03">
             <video autoPlay muted loop playsInline>
               <source src="/videos/mp4/motion03.mp4" type="video/mp4" />
               <source src="/videos/webm/motion03.webm" type="video/webm" />
             </video>
           </div>
-          <div className="home-hero-03-button">
-            <BotButton link="#fabrication-du-van-trico" ui="-big" />
-          </div>
+        </div>
+        <div className="home-hero-content">
+          <p>{carnetIntro}</p>
+        </div>
+        <div className="bot-button">
+          <BotButton link="#fabrication-du-van-trico" ui="-big" />
         </div>
       </section>
       <section id="fabrication-du-van-trico" className="secondpart">
