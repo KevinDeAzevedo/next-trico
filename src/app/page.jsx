@@ -78,6 +78,7 @@ export default async function Home() {
   const lastsArticles = articles.data.slice(-2);
   return (
     <main>
+      {/* Hero */}
       <section className="home-hero">
         <div className="home-hero-content">
           <p className="home-hero-content-name">Trico on the Road</p>
@@ -111,6 +112,7 @@ export default async function Home() {
           <BotButton link="#fabrication-du-van-trico" ui="-big" />
         </div>
       </section>
+      {/* Trico fabrication */}
       <section id="fabrication-du-van-trico" className="secondpart">
         <div className="secondpart-heading">
           <h2>{page.secondTitle}</h2>
@@ -134,6 +136,7 @@ export default async function Home() {
           </ul>
         </div>
       </section>
+      {/* About us */}
       <section className="thirdpart">
         <div className="thirdpart-title">
           <h2>{page.thirdTitle}</h2>
