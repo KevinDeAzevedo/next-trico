@@ -3,6 +3,7 @@ import BotButton from './components/BotButton';
 import PostCard from './components/PostCard';
 import Status from './components/Status';
 import Button from './components/Button';
+import Link from 'next/link';
 
 const options = {
   headers: {
@@ -53,6 +54,18 @@ async function getArticles() {
   return res.json();
 }
 
+async function getCountries() {
+  const res = await fetch(
+    `${process.env.STRAPI_URL}/api/countries?populate=*`,
+    options
+  );
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
+}
+
 // SEO ZONE
 export async function generateMetadata() {
   const data = await getHomepage();
@@ -76,6 +89,7 @@ export default async function Home() {
   const tricoIntro = trico.data.intro;
   const articles = await getArticles();
   const lastsArticles = articles.data.slice(-2);
+  const countries = await getCountries();
   return (
     <main>
       {/* Hero */}
@@ -111,6 +125,28 @@ export default async function Home() {
         <div className="bot-button">
           <BotButton link="#fabrication-du-van-trico" ui="-big" />
         </div>
+      </section>
+      <section id="list">
+        <ul className="countries">
+          {countries.data.map((country, index) => (
+            <li key={country.id} className="country">
+              <Link href={`/carnet-de-route/${country.slug}`}>
+                <div className="country-greeting">
+                  <p>{country.greeting}</p>
+                </div>
+                <div className="country-name">
+                  <Button name={country.name} />
+                </div>
+                <div className="country-image">
+                  <img
+                    src={`${process.env.STRAPI_URL}${country.cover.data.formats.medium.url}`}
+                    alt="Cover du pays"
+                  />
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
       {/* Trico fabrication */}
       <section id="fabrication-du-van-trico" className="secondpart">
