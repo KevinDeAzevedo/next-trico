@@ -50,6 +50,7 @@ export default async function sitemap() {
     'le-van-trico',
     'mentions-legales',
     'contact',
+    'news',
   ].map((route) => ({
     url: `${process.env.SITE_URL}/${route}`,
     lastModified: new Date().toISOString(),
