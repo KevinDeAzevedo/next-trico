@@ -85,7 +85,7 @@ export default async function Country({ params }) {
             </Link>
           </div>
         }
-        title={country.name}
+        title={`Road trip en ${country.name}`}
         cover={country.cover.data.attributes.url}
         botButtonLink="#list"
       />
