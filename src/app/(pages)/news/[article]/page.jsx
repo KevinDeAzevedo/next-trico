@@ -64,11 +64,13 @@ export default async function Article({ params }) {
           />
         </div>
       </div>
-      <Comment
-        url={`${process.env.SITE_URL}/News/${article.data.id}`}
-        id={article.data.id}
-        title={`Breaking News of ${article.data.id}`}
-      />
+      <div className="news-comment">
+        <Comment
+          url={`${process.env.SITE_URL}/News/${article.data.id}`}
+          id={article.data.id}
+          title={`Breaking News of ${article.data.id}`}
+        />
+      </div>
     </main>
   );
 }
