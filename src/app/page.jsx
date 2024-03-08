@@ -99,7 +99,7 @@ export default async function Home() {
           muted
           loop
           playsInline
-          poster="/videos/poster/pyrenne.webp"
+          poster="/videos/poster/pyrennee.webp"
         >
           <source src="/videos/mp4/pyrennee.mp4" type="video/mp4" />
           <source src="/videos/webm/pyrennee.webm" type="video/webm" />
