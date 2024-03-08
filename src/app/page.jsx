@@ -92,41 +92,26 @@ export default async function Home() {
   const countries = await getCountries();
   return (
     <main>
-      {/* Hero */}
-      <section className="home-hero">
-        <div className="home-hero-content">
-          <p className="home-hero-content-name">Trico on the Road</p>
+      {/* hero video banner */}
+      <section className="wide-hero">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/videos/poster/pyrenne.webp"
+        >
+          <source src="/videos/mp4/pyrennee.mp4" type="video/mp4" />
+          <source src="/videos/webm/pyrennee.webm" type="video/webm" />
+        </video>
+        <div className="wide-hero-content">
+          <p>Trico on the Road</p>
           <h1>{page.firstTitle}</h1>
-          <Button name="Carnet de route" link="/carnet-de-route" />
-        </div>
-        <div className="home-hero-videos">
-          <div className="home-hero-videos-card" id="video01">
-            <video autoPlay muted loop playsInline>
-              <source src="/videos/mp4/motion01.mp4" type="video/mp4" />
-              <source src="/videos/webm/motion01.webm" type="video/webm" />
-            </video>
-          </div>
-          <div className="home-hero-videos-card" id="video02">
-            <video autoPlay muted loop playsInline>
-              <source src="/videos/mp4/motion02.mp4" type="video/mp4" />
-              <source src="/videos/webm/motion02.webm" type="video/webm" />
-            </video>
-          </div>
-          <div className="home-hero-videos-card" id="video03">
-            <video autoPlay muted loop playsInline>
-              <source src="/videos/mp4/motion03.mp4" type="video/mp4" />
-              <source src="/videos/webm/motion03.webm" type="video/webm" />
-            </video>
-          </div>
-        </div>
-        <div className="home-hero-content">
           <p>{carnetIntro}</p>
         </div>
-        <div className="bot-button">
-          <BotButton link="#fabrication-du-van-trico" ui="-big" />
-        </div>
       </section>
-      <section id="list">
+      <section id="list" className="carnets">
+        <h2>Carnet de route</h2>
         <ul className="countries">
           {countries.data.map((country, index) => (
             <li key={country.id} className="country">
@@ -149,15 +134,15 @@ export default async function Home() {
         </ul>
       </section>
       {/* Trico fabrication */}
-      <section id="fabrication-du-van-trico" className="secondpart">
-        <div className="secondpart-heading">
+      <section id="fabrication-du-van-trico" className="van-trico">
+        <div className="van-trico-heading">
           <h2>{page.secondTitle}</h2>
           <Status status={trico.data.isFinished} />
           <p>{tricoIntro}</p>
           <Button name="Le van Trico" link="/le-van-trico" />
         </div>
         <div>
-          <ul className="secondpart-list">
+          <ul className="van-trico-list">
             {lastsArticles.map((article, index) => (
               <li key={article.id}>
                 <PostCard
@@ -173,18 +158,18 @@ export default async function Home() {
         </div>
       </section>
       {/* About us */}
-      <section className="thirdpart">
-        <div className="thirdpart-title">
+      <section className="a-propos">
+        <div className="a-propos-title">
           <h2>{page.thirdTitle}</h2>
         </div>
-        <div className="thirdpart-image">
+        <div className="a-propos-image">
           <img
             className="avatarhome"
             src={`${process.env.STRAPI_URL}${avatar.url}`}
             alt="Avatar Kévin et Célestine"
           />
         </div>
-        <div className="thirdpart-content">
+        <div className="a-propos-content">
           <p>{page.aboutUs}</p>
           <Button name="Se contacter" link="/contact" />
         </div>
