@@ -73,3 +73,5 @@ export default async function sitemap() {
     ...breakingNewsPath,
   ];
 }
+
+export const dynamic = 'force-dynamic';
