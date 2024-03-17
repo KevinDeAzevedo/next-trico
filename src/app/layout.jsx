@@ -2,7 +2,6 @@ import Marquee from './components/Marquee';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import { GoogleTagManager } from '@next/third-parties/google';
-import Cookies from './components/Cookies';
 import './style/main.sass';
 
 export const metadata = {
@@ -33,7 +32,6 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <GoogleTagManager gtmId="GTM-W9RF3JN" />
-        <Cookies />
       </body>
     </html>
   );
