@@ -26,7 +26,13 @@ export default async function Navigation() {
   return (
     <div className="navigation">
       <Link href="/">
-        <Image className="logo" src={logo} alt="Logo Trico on the road" />
+        <Image
+          className="logo"
+          width={70}
+          height={70}
+          src={logo}
+          alt="Logo Trico on the road"
+        />
       </Link>
       <BurgerMenu countries={countries} />
     </div>
