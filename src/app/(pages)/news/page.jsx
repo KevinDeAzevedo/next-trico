@@ -99,11 +99,13 @@ export default async function News({ searchParams }) {
       )}
 
       <Pagination paginationData={paginationData} />
-      <Comment
-        url={`${process.env.SITE_URL}/News`}
-        id="Breaking-news"
-        title="Breaking News"
-      />
+      <div className="max-w">
+        <Comment
+          url={`${process.env.SITE_URL}/News`}
+          id="Breaking-news"
+          title="Breaking News"
+        />
+      </div>
     </main>
   );
 }
