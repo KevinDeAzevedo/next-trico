@@ -70,7 +70,7 @@ export default async function Article({ params }) {
       <div className="news-comment">
         <Comment
           url={`${process.env.SITE_URL}/News/${article.data.id}`}
-          id={article.data.id}
+          id={article.data.id.toString()}
           title={`Breaking News of ${article.data.id}`}
         />
       </div>

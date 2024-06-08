@@ -128,7 +128,7 @@ export default async function Country({ params }) {
         <Slideshow picture={arrayOfPictures} />
         <Comment
           url={`${process.env.SITE_URL}/carnet-de-route/${country.slug}/${location.slug}`}
-          id={location.id}
+          id={location.slug}
           title={location.title}
         />
       </section>

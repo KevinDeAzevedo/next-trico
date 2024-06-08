@@ -78,7 +78,7 @@ export default async function Article({ params }) {
         <Slideshow picture={arrayOfPictures} />
         <Comment
           url={`${process.env.SITE_URL}/le-van-trico/${article.slug}`}
-          id={article.id}
+          id={article.slug}
           title={article.title}
         />
       </section>
