@@ -4,6 +4,7 @@ import When from '../../../components/When';
 import Comment from '../../../components/Comment';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const options = {
   headers: {
@@ -58,8 +59,10 @@ export default async function Article({ params }) {
           <MDXRemote source={processImage(article.data.content)} />
         </div>
         <div className="news-article-image">
-          <img
-            src={`${process.env.STRAPI_URL}${article.data.cover.data.formats.large.url}`}
+          <Image
+            src={`${process.env.STRAPI_URL}${article.data.cover.data.url}`}
+            width="400"
+            height="700"
             alt="Couverture de la news"
           />
         </div>

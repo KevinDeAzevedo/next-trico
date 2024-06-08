@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: `${process.env.PROTOCOL}`,
+        hostname: `${process.env.HOSTNAME}`,
+      },
+    ],
+  },
 };
 module.exports = nextConfig;
