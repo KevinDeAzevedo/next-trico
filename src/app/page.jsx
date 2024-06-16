@@ -66,6 +66,18 @@ async function getCountries() {
   return res.json();
 }
 
+async function getTwoLastsLocations() {
+  const res = await fetch(
+    `${process.env.STRAPI_URL}/api/locations?sort=createdAt:desc&pagination[limit]=2&populate=*`,
+    options
+  );
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
+}
+
 // SEO ZONE
 export async function generateMetadata() {
   const data = await getHomepage();
@@ -90,6 +102,7 @@ export default async function Home() {
   const articles = await getArticles();
   const lastsArticles = articles.data.slice(-2);
   const countries = await getCountries();
+  const twoLastsLocations = await getTwoLastsLocations();
   return (
     <main>
       {/* hero video banner */}
@@ -109,6 +122,22 @@ export default async function Home() {
           <h1>{page.firstTitle}</h1>
           <p>{carnetIntro}</p>
         </div>
+      </section>
+      <section className="two-last-locations">
+        <h2>Les derniers articles</h2>
+        <ul className="">
+          {twoLastsLocations.data.map((location) => (
+            <li key={location.id}>
+              <PostCard
+                date={location.date}
+                title={location.title}
+                link={`/carnet-de-route/${location.country.data.slug}/${location.slug}`}
+                intro={location.intro}
+                cover={location.cover.data.formats.medium.url}
+              />
+            </li>
+          ))}
+        </ul>
       </section>
       <section id="list" className="carnets">
         <h2>Carnet de route</h2>
