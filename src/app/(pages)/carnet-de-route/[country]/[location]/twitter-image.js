@@ -29,7 +29,7 @@ async function getLocation(params) {
 export const alt = 'Un article Trico on the Road';
 export const size = {
   width: 1200,
-  height: 630,
+  height: 675,
 };
 
 export const contentType = 'image/png';
@@ -62,7 +62,7 @@ export default async function Image({ params }) {
             left: '0',
             top: '0',
             width: '1200px',
-            height: '630px',
+            height: '675px',
           }}
         >
           <img
