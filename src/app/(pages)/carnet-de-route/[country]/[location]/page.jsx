@@ -5,6 +5,7 @@ import HeroBanner from '../../../../components/HeroBanner';
 import Return from '../../../../components/Return';
 import Slideshow from '../../../../components/Slideshow';
 import Comment from '../../../../components/Comment';
+import ShareButtons from '../../../../components/ShareButtons';
 
 const options = {
   headers: {
@@ -124,8 +125,14 @@ export default async function Country({ params }) {
             </li>
           )}
         </ul>
+        <ShareButtons
+          link={`${process.env.SITE_URL}/carnet-de-route/${country.slug}/${location.slug}`}
+        />
         <MDXRemote source={processImage(location.content)} />
         <Slideshow picture={arrayOfPictures} />
+        <ShareButtons
+          link={`${process.env.SITE_URL}/carnet-de-route/${country.slug}/${location.slug}`}
+        />
         <Comment
           url={`${process.env.SITE_URL}/carnet-de-route/${country.slug}/${location.slug}`}
           id={location.slug}
