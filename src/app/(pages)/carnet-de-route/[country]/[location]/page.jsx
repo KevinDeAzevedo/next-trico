@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import CustomLink from '../../../../components/CustomLink';
 import HeroBanner from '../../../../components/HeroBanner';
 import Return from '../../../../components/Return';
 import Slideshow from '../../../../components/Slideshow';
@@ -60,6 +61,10 @@ export default async function Country({ params }) {
       );
     }
   }
+  // custom component for MDX to render links on new tab
+  const components = {
+    a: CustomLink,
+  };
   return (
     <main>
       <HeroBanner
@@ -128,7 +133,10 @@ export default async function Country({ params }) {
         <ShareButtons
           link={`${process.env.SITE_URL}/carnet-de-route/${country.slug}/${location.slug}`}
         />
-        <MDXRemote source={processImage(location.content)} />
+        <MDXRemote
+          source={processImage(location.content)}
+          components={components}
+        />
         <Slideshow picture={arrayOfPictures} />
         <ShareButtons
           link={`${process.env.SITE_URL}/carnet-de-route/${country.slug}/${location.slug}`}
