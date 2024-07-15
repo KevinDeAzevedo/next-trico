@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import CustomLink from '../../../../components/CustomLink';
 import HeroBanner from '../../../../components/HeroBanner';
+import DatasSnippet from '../../../../components/DatasSnippet';
 import Return from '../../../../components/Return';
 import Slideshow from '../../../../components/Slideshow';
 import Comment from '../../../../components/Comment';
@@ -87,8 +88,17 @@ export default async function Country({ params }) {
         date={location.date}
         gmap={location.gmaps}
       />
+      <DatasSnippet
+        days={location.days}
+        budget={location.budget}
+        hours={location.hours}
+        minutes={location.minutes}
+        motion={location.motion}
+        difficulty={location.difficulty}
+        accessibility={location.accessibility}
+      />
       <section className="article-content">
-        <ul className="article-content-data">
+        {/* <ul className="article-content-data">
           <li>
             {location.distance === null ? (
               <p>Distance : 0</p>
@@ -129,7 +139,7 @@ export default async function Country({ params }) {
               </p>
             </li>
           )}
-        </ul>
+        </ul> */}
         <ShareButtons
           link={`${process.env.SITE_URL}/carnet-de-route/${country.slug}/${location.slug}`}
         />

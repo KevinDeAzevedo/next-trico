@@ -1,0 +1,33 @@
+.datas
+  width: 70%
+  margin: auto
+  background-color: $third-color
+  padding: 1.5rem 5%
+  margin-bottom: 1rem
+  border-radius: 0 0 2rem 2rem
+  @media screen and (max-width: map-get($breakpoints, mobile))
+    width: 100%
+    border-radius: 0
+  ul
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    gap: 2rem
+    @media screen and (max-width: map-get($breakpoints, tablet))
+      flex-direction: column
+    li
+      text-align: center
+      pre
+        margin: 0
+        padding: 0
+        background: none
+        font-family: 'Satoshi-Variable', 'Helvetica', sans-serif
+        font-size: 1rem
+        white-space: pre-wrap
+    .icon
+      width: 1.5rem
+      height: 1.5rem
+      aspect-ratio: 1/1
+      vertical-align: bottom
+      margin-right: .5rem
