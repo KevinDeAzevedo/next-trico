@@ -96,6 +96,7 @@ export default async function Country({ params }) {
         motion={location.motion}
         difficulty={location.difficulty}
         accessibility={location.accessibility}
+        distance={location.distance}
       />
       <section className="article-content">
         {/* <ul className="article-content-data">
