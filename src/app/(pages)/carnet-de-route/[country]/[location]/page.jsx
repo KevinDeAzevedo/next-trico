@@ -99,48 +99,6 @@ export default async function Country({ params }) {
         distance={location.distance}
       />
       <section className="article-content">
-        {/* <ul className="article-content-data">
-          <li>
-            {location.distance === null ? (
-              <p>Distance : 0</p>
-            ) : (
-              <p>
-                Distance :{' '}
-                <span className="styled">
-                  {location.distance.toLocaleString('fr')} km(s)
-                </span>
-                <span className="styled"> {location.motion}</span>
-              </p>
-            )}
-          </li>
-          <li>
-            {location.budget === null ? (
-              <p>Budget : 0</p>
-            ) : (
-              <p>
-                Budget :{' '}
-                <span className="styled">
-                  {location.budget.toLocaleString('fr')} €
-                </span>
-              </p>
-            )}
-          </li>
-          {location.days === null && location.hours === null ? null : (
-            <li>
-              <p>
-                Temps passé :
-                {location.days === null ? null : (
-                  <span className="styled"> {location.days} jours</span>
-                )}
-                <span>
-                  {location.hours === null ? null : (
-                    <span className="styled"> {location.hours} heure(s)</span>
-                  )}
-                </span>
-              </p>
-            </li>
-          )}
-        </ul> */}
         <ShareButtons
           link={`${process.env.SITE_URL}/carnet-de-route/${country.slug}/${location.slug}`}
         />
