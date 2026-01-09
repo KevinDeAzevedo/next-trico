@@ -8,6 +8,29 @@ export default function Form({ StrapiUrl, StrapiToken }) {
   const [newEmail, setNewEmail] = useState('');
   const [newMessage, setNewMessage] = useState('');
   const [status, setStatus] = useState('');
+  const [captchaA, setCaptchaA] = useState(0);
+  const [captchaB, setCaptchaB] = useState(0);
+  const [captchaValue, setCaptchaValue] = useState('');
+
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+
+  function generateCaptcha() {
+    setCaptchaA(Math.floor(Math.random() * 10));
+    setCaptchaB(Math.floor(Math.random() * 10));
+    setCaptchaValue('');
+  }
+
+  function captchaIsValid() {
+    if (parseInt(captchaValue, 10) === captchaA + captchaB) {
+      return true;
+    } else {
+      setStatus('Captcha incorrect');
+      generateCaptcha(); // régénère en cas d’erreur
+      return false;
+    }
+  }
 
   function nameIsValid() {
     const nameReg = new RegExp(/^[a-zA-ZÀ-ÿ -]+$/i);
@@ -30,7 +53,7 @@ export default function Form({ StrapiUrl, StrapiToken }) {
   }
 
   function validationForm() {
-    if (nameIsValid() && emailIsValid()) {
+    if (nameIsValid() && emailIsValid() && captchaIsValid()) {
       return true;
     }
   }
@@ -62,7 +85,8 @@ export default function Form({ StrapiUrl, StrapiToken }) {
             ? (setStatus('Message envoyé !'),
               setNewName(''),
               setNewEmail(''),
-              setNewMessage(''))
+              setNewMessage(''),
+              generateCaptcha())
             : console.log(
                 `Status :${data.error.status}, Name: ${data.error.name}, Message:${data.error.message}`
               )
@@ -99,6 +123,19 @@ export default function Form({ StrapiUrl, StrapiToken }) {
           value={newMessage}
           onChange={(e) => setNewMessage(e.currentTarget.value)}
         ></textarea>
+
+        <label htmlFor="captcha">
+          Combien font {captchaA} + {captchaB} ?
+        </label>
+        <input
+          className="captcha"
+          id="captcha"
+          type="text"
+          placeholder="Votre réponse"
+          value={captchaValue}
+          onChange={(e) => setCaptchaValue(e.currentTarget.value)}
+        />
+
         <div className="submit-area">
           <button type="submit" className="submit-button">
             Envoyer
